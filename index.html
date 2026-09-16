@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grupo Beiramar — 45 anos construindo o jeito de morar de Brasília</title>
+<meta name="description" content="Há 45 anos, o Grupo Beiramar transforma o mercado imobiliário de Brasília. Imóveis, gestão de ativos e incorporação sob uma mesma assinatura de solidez.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{
+    /* Paleta oficial — Manual de Identidade Visual Grupo Beiramar */
+    --navy:#00458C;        /* Azul Beiramar — principal */
+    --navy-deep:#003168;   /* variação escura do Azul Beiramar */
+    --ink:#001320;         /* Abissal */
+    --royal:#1D63FF;       /* Correnteza — acento */
+    --royal-soft:#1CA3E0;  /* Água Rasa */
+    --steel:#667482;       /* Rocha Marítima — cinza institucional */
+    --steel-soft:#A9B4C0;  /* Rocha Marítima clareada p/ texto sobre escuro */
+    --mist:#EEF5FF;        /* Espuma do Mar */
+    --paper:#F6FAFF;
+    --white:#FFFFFF;
+    --text:#0E2136;
+    --text-soft:#496585;
+    --line:rgba(0,69,140,.15);
+
+    --display:"DM Sans",system-ui,sans-serif;
+    --body:"DM Sans",system-ui,-apple-system,sans-serif;
+
+    --maxw:1240px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);
+    color:var(--text);
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--royal);color:#fff}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  @media(max-width:720px){.wrap{padding:0 22px}}
+
+  /* ---------- reusable ---------- */
+  .eyebrow{
+    font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--royal);display:inline-flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--royal);opacity:.6}
+  h1 em,h2 em,h3 em,.sec-head em,.founder-copy h2 em{font-style:normal}
+  h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.05;letter-spacing:-.01em}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--body);font-weight:600;font-size:15px;
+    padding:15px 28px;border-radius:2px;transition:.35s var(--ease);
+    cursor:pointer;border:none;
+  }
+  .btn-primary{background:var(--navy);color:#fff}
+  .btn-primary:hover{background:var(--royal);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--navy);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--navy);background:var(--mist)}
+  .arrow{transition:transform .35s var(--ease)}
+  .btn:hover .arrow{transform:translateX(4px)}
+
+  /* ---------- header ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    transition:.4s var(--ease);
+    background:transparent;
+  }
+  header.scrolled{
+    background:rgba(255,255,255,.86);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:84px}
+  .brand{display:flex;align-items:center;transition:.4s}
+  .brand .logo{height:28px;width:auto;display:block}
+  .brand .logo-neg{display:none}
+  .brand .logo-color{display:block}
+  header.on-dark .navlinks a{color:#fff}
+  header.on-dark:not(.scrolled) .brand .logo-neg{display:block}
+  header.on-dark:not(.scrolled) .brand .logo-color{display:none}
+  header.scrolled.on-dark .navlinks a{color:var(--navy)}
+  @media(max-width:720px){.brand .logo{height:24px}}
+  .navlinks{display:flex;align-items:center;gap:38px}
+  .navlinks a{font-size:14.5px;font-weight:500;color:var(--text);position:relative;transition:.3s}
+  .navlinks a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1.5px;background:var(--royal);transition:.3s var(--ease)}
+  .navlinks a:hover::after{width:100%}
+  .nav-cta{background:var(--royal);color:#fff!important;padding:11px 22px;border-radius:2px;font-weight:600}
+  .nav-cta::after{display:none!important}
+  .nav-cta:hover{background:var(--navy)}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+  .burger span{width:26px;height:2px;background:currentColor;color:var(--navy);transition:.3s}
+  header.on-dark:not(.scrolled) .burger span{background:#fff}
+  @media(max-width:920px){
+    .navlinks{display:none}
+    .burger{display:flex}
+  }
+
+  /* mobile menu */
+  .mobile-menu{
+    position:fixed;inset:0;z-index:99;background:var(--ink);
+    display:flex;flex-direction:column;justify-content:center;align-items:center;gap:28px;
+    opacity:0;pointer-events:none;transition:.45s var(--ease);
+  }
+  .mobile-menu.open{opacity:1;pointer-events:all}
+  .mobile-menu a{color:#fff;font-family:var(--display);font-size:30px}
+  .mobile-menu .close{position:absolute;top:32px;right:32px;font-size:34px;color:#fff;background:none;border:none;cursor:pointer}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;align-items:center;
+    background:radial-gradient(120% 130% at 80% 8%,#1D63FF 0%,#00458C 45%,#001320 100%);
+    color:#fff;overflow:hidden;
+  }
+  .hero-arcs{position:absolute;inset:0;pointer-events:none;opacity:.5}
+  .hero-arcs svg{position:absolute;top:50%;left:78%;transform:translate(-50%,-50%);width:min(1500px,150vw);height:auto}
+  .hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;
+    background:radial-gradient(circle,rgba(50,98,246,.34),transparent 62%);
+    top:-160px;right:-120px;filter:blur(30px);pointer-events:none}
+  .hero .wrap{position:relative;z-index:2;width:100%;padding-top:100px;padding-bottom:60px}
+  .hero-inner{max-width:820px}
+  .hero .eyebrow{color:#8DB0FF}
+  .hero .eyebrow::before{background:#8DB0FF}
+  .hero h1{
+    font-size:clamp(2.9rem,7vw,5.6rem);margin:26px 0 26px;color:#fff;font-weight:300;
+  }
+  .hero h1 em{font-style:normal;font-weight:500;color:var(--royal-soft)}
+  .hero h1 b{font-weight:600;color:#fff}
+  .hero p{font-size:clamp(1.05rem,1.6vw,1.28rem);color:#C7D6EE;max-width:560px;font-weight:400}
+  /* 45 anos seal floating in hero */
+  .hero-seal{
+    position:absolute;top:50%;right:6%;transform:translateY(-50%);
+    width:min(340px,30vw);z-index:2;
+    animation:sealIn 1.4s var(--ease) both .3s;
+  }
+  .hero-seal img{width:100%;height:auto;display:block}
+  @keyframes sealIn{from{opacity:0;transform:translateY(-50%) scale(.94)}to{opacity:.92;transform:translateY(-50%) scale(1)}}
+  .hero-seal{opacity:.92}
+  @media(max-width:1080px){.hero-seal{display:none}}
+  .hero-cta{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap}
+  .hero .btn-ghost{color:#fff;border-color:rgba(255,255,255,.28)}
+  .hero .btn-ghost:hover{background:rgba(255,255,255,.08);border-color:#fff}
+  .scroll-hint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+    z-index:3;color:rgba(255,255,255,.5);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    display:flex;flex-direction:column;align-items:center;gap:10px}
+  .scroll-hint .line{width:1px;height:44px;background:linear-gradient(#fff,transparent);animation:drop 2s infinite}
+  @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+  /* ---------- big numbers ---------- */
+  .bignumbers{
+    background:radial-gradient(120% 130% at 50% 0%,#123168 0%,#002347 45%,#001320 100%);
+    color:#fff;padding:110px 0;position:relative;overflow:hidden;
+  }
+  .bignum-arcs{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(1300px,150vw);opacity:.4;pointer-events:none}
+  .bignumbers .wrap{position:relative;z-index:2}
+  .bignum-block+.bignum-block{margin-top:34px;padding-top:52px;border-top:1px solid rgba(255,255,255,.14)}
+  .bignum-lede{display:flex;align-items:center;gap:34px;margin-bottom:52px;flex-wrap:wrap}
+  .bignum-brand{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);
+    font-size:1.7rem;font-weight:500;color:#fff;letter-spacing:.02em;white-space:nowrap}
+  .bignum-brand .logo{height:30px;width:auto;display:block}
+  .bignum-brand .logo.bignum-logo-brm{height:32px}
+  .bignum-brand-brm{font-weight:600;letter-spacing:.04em}
+  .bignum-brand .chip{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.06em;
+    text-transform:lowercase;color:#fff;padding:4px 10px;border-radius:20px;line-height:1;position:relative;top:-2px}
+  .bignum-lede p{color:#C7D6EE;font-size:1.12rem;max-width:520px;margin:0}
+  .bignum-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  @media(max-width:820px){.bignum-grid{grid-template-columns:repeat(2,1fr);gap:18px}}
+  @media(max-width:420px){.bignum-grid{grid-template-columns:1fr}}
+  .bn{
+    background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:6px;padding:34px 28px 30px;position:relative;overflow:hidden;
+    transition:.4s var(--ease);
+  }
+  .bn::before{content:"";position:absolute;left:0;top:0;height:100%;width:3px;background:var(--royal);
+    transform:scaleY(0);transform-origin:top;transition:.5s var(--ease)}
+  .bn:hover{border-color:rgba(91,138,255,.5);transform:translateY(-5px);
+    background:linear-gradient(160deg,rgba(91,138,255,.14),rgba(255,255,255,.03));
+    box-shadow:0 26px 50px -28px rgba(0,0,0,.6)}
+  .bn:hover::before{transform:scaleY(1)}
+  .bn-num{font-family:var(--display);font-weight:300;line-height:.9;
+    font-size:clamp(2.6rem,4.4vw,3.8rem);color:#fff;letter-spacing:-.02em}
+  .bn-num .u{font-size:.6em;font-weight:400;color:var(--steel)}
+  .bn-lbl{font-size:.96rem;color:#A7C0E4;margin-top:18px;line-height:1.4;
+    padding-top:16px;border-top:1px solid rgba(255,255,255,.1)}
+
+  /* ---------- section base ---------- */
+  section{position:relative}
+  .band{padding:130px 0}
+  .band-mist{background:var(--mist)}
+  .sec-head{max-width:760px;margin-bottom:64px}
+  .sec-head h2{font-size:clamp(2.1rem,4vw,3.2rem);margin-top:22px;color:var(--navy)}
+  .sec-head h2 em{font-style:normal;font-weight:500;color:var(--royal)}
+  .sec-head p{font-size:1.12rem;color:var(--text-soft);margin-top:22px;max-width:620px}
+
+  /* ---------- about split ---------- */
+  .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;align-items:center}
+  @media(max-width:920px){.about-grid{grid-template-columns:1fr;gap:48px}}
+  .about-copy p{color:var(--text-soft);font-size:1.08rem;margin-bottom:20px}
+  .about-copy p.lead{font-family:var(--display);font-size:1.5rem;line-height:1.4;color:var(--text);font-weight:400;margin-bottom:28px}
+  .about-copy p.lead em{font-style:normal;font-weight:500;color:var(--royal)}
+  .about-visual{position:relative;aspect-ratio:4/5;border-radius:4px;overflow:hidden;
+    background:linear-gradient(150deg,#0A5AB4,#001320)}
+  .about-visual .yr{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:44px;color:#fff}
+  .about-visual .yr .big{font-family:var(--display);font-size:5.5rem;line-height:.9;font-weight:300}
+  .about-visual .yr .sm{font-size:15px;color:var(--steel);margin-top:12px;max-width:240px}
+  .about-visual .arc-deco{position:absolute;top:-30%;right:-30%;width:130%;opacity:.35}
+
+  /* ---------- vídeo institucional ---------- */
+  .video-band{background:var(--mist);padding:110px 0}
+  .video-head{max-width:680px;margin:0 auto 48px;text-align:center}
+  .video-head h2{font-size:clamp(1.9rem,3.6vw,2.8rem);color:var(--navy);margin-top:18px}
+  .video-head h2 em{font-style:normal;font-weight:500;color:var(--royal)}
+  .video-head .eyebrow{justify-content:center}
+  .video-frame{max-width:960px;margin:0 auto;aspect-ratio:16/9;border-radius:10px;overflow:hidden;
+    position:relative;box-shadow:0 40px 80px -40px rgba(0,19,33,.45)}
+  /* quando houver iframe do YouTube, ele preenche 100% */
+  .video-frame iframe{width:100%;height:100%;border:0;display:block}
+  /* placeholder enquanto o vídeo não é publicado */
+  .video-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
+    background:radial-gradient(120% 130% at 50% 30%,#0A5AB4 0%,#002347 55%,#001320 100%);color:#fff;cursor:pointer;transition:.4s var(--ease)}
+  .video-ph:hover{filter:brightness(1.08)}
+  .video-ph .play{width:84px;height:84px;border-radius:50%;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;transition:.4s var(--ease)}
+  .video-ph:hover .play{background:var(--royal);border-color:var(--royal);transform:scale(1.08)}
+  .video-ph .play svg{width:30px;height:30px;color:#fff;margin-left:4px}
+  .video-ph .vlabel{font-size:14px;letter-spacing:.05em;color:#C7D6EE}
+  .video-ph .vsub{font-size:12px;color:#8DB0FF;letter-spacing:.02em}
+
+  /* ---------- frentes / brand architecture ---------- */
+  .frentes-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-bottom:56px}
+  .frentes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  @media(max-width:820px){.frentes-grid{grid-template-columns:1fr}}
+  .frente{
+    position:relative;background:var(--white);border:1px solid var(--line);
+    border-radius:4px;padding:44px;overflow:hidden;transition:.45s var(--ease);
+    display:flex;flex-direction:column;min-height:340px;
+  }
+  .frente::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--royal);transition:.5s var(--ease)}
+  .frente:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(11,27,43,.34);border-color:transparent}
+  .frente:hover::before{width:100%}
+  .frente .badge{
+    display:inline-flex;align-items:center;font-family:var(--display);
+    font-size:1.7rem;color:var(--navy);font-weight:500;letter-spacing:.01em;
+  }
+  .frente .badge .frente-logo{height:28px;width:auto;display:block}
+  .frente .badge .frente-logo-imoveis{height:43px}
+  .frente h3{font-size:1.45rem;color:var(--navy);margin:22px 0 14px;font-family:var(--display);font-weight:400}
+  .frente p{color:var(--text-soft);font-size:1rem;flex-grow:1}
+  .frente .lk{margin-top:26px;font-weight:600;font-size:14px;color:var(--navy);display:inline-flex;align-items:center;gap:9px}
+  .frente:hover .lk{color:var(--royal)}
+  .frente .n{position:absolute;top:38px;right:44px;font-family:var(--display);font-size:1rem;color:var(--steel)}
+
+  /* ---------- fundador ---------- */
+  .founder{background:var(--white)}
+  .founder-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:center}
+  @media(max-width:900px){.founder-grid{grid-template-columns:1fr;gap:44px}}
+  .founder-photo{position:relative}
+  .founder-img{aspect-ratio:4/5;border-radius:6px;overflow:hidden;position:relative;
+    background:linear-gradient(150deg,#0A5AB4,#001320);display:flex;align-items:center;justify-content:center}
+  .founder-ph{color:rgba(255,255,255,.5);font-size:14px;letter-spacing:.05em}
+  .founder-caption{margin-top:22px;padding-left:20px;border-left:3px solid var(--royal)}
+  .founder-name{font-family:var(--display);font-size:1.5rem;color:var(--navy);font-weight:500}
+  .founder-role{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-soft);font-weight:600;margin-top:4px}
+  .founder-copy h2{font-size:clamp(1.9rem,3.6vw,2.8rem);color:var(--navy);margin-top:20px}
+  .founder-copy h2 em{font-style:normal;font-weight:500;color:var(--royal)}
+  .founder-copy p{color:var(--text-soft);font-size:1.06rem;margin-bottom:20px}
+  .founder-copy p.lead{font-family:var(--display);font-size:1.4rem;line-height:1.4;color:var(--text);font-weight:400;margin:26px 0 24px}
+  .founder-quote{border-left:3px solid var(--royal);padding:4px 0 4px 26px;margin:30px 0 0;
+    font-family:var(--display);font-style:italic;font-size:1.35rem;color:var(--navy);line-height:1.4}
+
+  /* ---------- atuacao / services ---------- */
+  .serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  @media(max-width:820px){.serv-grid{grid-template-columns:1fr}}
+  .serv{padding:48px 40px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:.4s var(--ease);background:var(--white)}
+  .serv:hover{background:var(--mist)}
+  .serv .ico{width:44px;height:44px;color:var(--royal);margin-bottom:26px}
+  .serv h3{font-size:1.25rem;color:var(--navy);margin-bottom:12px;font-family:var(--display);font-weight:400}
+  .serv p{color:var(--text-soft);font-size:.98rem}
+
+  /* ---------- diferenciais / dark quote ---------- */
+  .creed{background:var(--ink);color:#fff;padding:140px 0;position:relative;overflow:hidden}
+  .creed-arcs{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(1400px,140vw);opacity:.18;pointer-events:none}
+  .creed .wrap{position:relative;z-index:2}
+  .creed blockquote{max-width:960px;font-family:var(--display);font-weight:300;
+    font-size:clamp(1.8rem,4vw,3rem);line-height:1.28;letter-spacing:-.01em}
+  .creed blockquote em{font-style:normal;font-weight:500;color:var(--royal-soft)}
+  .creed .sig{margin-top:44px;display:flex;align-items:center;gap:16px;color:var(--steel);font-size:14.5px}
+  .creed .sig .bar{width:40px;height:1px;background:var(--steel)}
+
+  /* ---------- portfólio ---------- */
+  .portfolio{background:var(--white)}
+  .port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  @media(max-width:900px){.port-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:620px){.port-grid{grid-template-columns:1fr}}
+  .port-card{border-radius:6px;overflow:hidden;border:1px solid var(--line);background:var(--white);
+    transition:.45s var(--ease);display:flex;flex-direction:column}
+  .port-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -32px rgba(11,27,43,.3);border-color:transparent}
+  .port-img{aspect-ratio:4/3;position:relative;overflow:hidden;
+    background:linear-gradient(150deg,#0A5AB4,#001320);display:flex;align-items:center;justify-content:center}
+  .port-img.g2{background:linear-gradient(150deg,#00448B,#002852)}
+  .port-img.g3{background:linear-gradient(150deg,#00458C,#001320)}
+  .port-img.g4{background:linear-gradient(150deg,#0A5AB4,#001320)}
+  .port-img.g5{background:linear-gradient(150deg,#002852,#001320)}
+  .port-img.g6{background:linear-gradient(150deg,#0A5AB4,#002347)}
+  .port-ph{color:rgba(255,255,255,.5);font-size:13px;letter-spacing:.05em}
+  .port-status{position:absolute;top:16px;left:16px;font-size:11px;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;background:rgba(255,255,255,.16);backdrop-filter:blur(6px);color:#fff;padding:6px 12px;border-radius:20px}
+  .port-body{padding:26px 26px 30px}
+  .port-body h3{font-family:var(--display);font-weight:400;font-size:1.35rem;color:var(--navy);margin-bottom:8px}
+  .port-loc{font-size:.95rem;color:var(--text-soft);display:flex;align-items:center;gap:7px;margin-bottom:18px}
+  .port-loc svg{width:15px;height:15px;color:var(--royal);flex-shrink:0}
+  .port-specs{display:flex;gap:22px;padding-top:18px;border-top:1px solid var(--line)}
+  .port-spec .v{font-family:var(--display);font-size:1.25rem;color:var(--navy)}
+  .port-spec .k{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-soft);margin-top:2px}
+
+  /* ---------- blog ---------- */
+  .blog-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:start}
+  @media(max-width:900px){.blog-grid{grid-template-columns:1fr;gap:24px}}
+  .post{display:block;text-decoration:none;color:inherit;transition:.4s var(--ease)}
+  .post-feature{background:var(--white);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .post-feature:hover{transform:translateY(-5px);box-shadow:0 30px 60px -32px rgba(11,27,43,.32);border-color:transparent}
+  .post-media{height:280px;position:relative;
+    background:linear-gradient(150deg,#0A5AB4,#001320);overflow:hidden}
+  .post-media::after{content:"";position:absolute;inset:0;
+    background:radial-gradient(120% 120% at 80% 10%,rgba(50,98,246,.35),transparent 60%)}
+  .post-cat{position:absolute;top:20px;left:20px;z-index:2;
+    font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    background:var(--royal);color:#fff;padding:6px 12px;border-radius:20px}
+  .cat-grupo{background:var(--navy)}
+  .cat-invest{background:var(--ink)}
+  .post-body{padding:34px}
+  .post-meta{font-size:12.5px;letter-spacing:.04em;color:var(--text-soft);font-weight:600;text-transform:uppercase;margin-bottom:14px}
+  .post-body h3{font-size:1.7rem;color:var(--navy);line-height:1.2;margin-bottom:14px;font-family:var(--display);font-weight:400}
+  .post-body p{color:var(--text-soft);font-size:1.02rem;margin-bottom:22px}
+  .post-lk{font-weight:600;font-size:14px;color:var(--royal);display:inline-flex;align-items:center;gap:9px}
+  .post-list{display:flex;flex-direction:column;gap:18px}
+  .post-mini{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:26px 28px;position:relative}
+  .post-mini .post-cat{position:static;display:inline-block;margin-bottom:14px}
+  .post-mini:hover{transform:translateX(5px);border-color:var(--royal)}
+  .post-mini h4{font-family:var(--display);font-weight:400;font-size:1.2rem;color:var(--navy);line-height:1.25;margin-bottom:10px}
+  .blog-all{margin-top:48px;text-align:center}
+  .contact{padding:130px 0;background:var(--paper)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+  @media(max-width:920px){.contact-grid{grid-template-columns:1fr;gap:48px}}
+  .contact h2{font-size:clamp(2.2rem,4.4vw,3.4rem);color:var(--navy)}
+  .contact h2 em{font-style:normal;font-weight:500;color:var(--royal)}
+  .contact .sub{color:var(--text-soft);font-size:1.1rem;margin-top:22px;max-width:440px}
+  .contact-info{margin-top:44px;display:flex;flex-direction:column;gap:26px}
+  .ci{display:flex;gap:16px;align-items:flex-start}
+  .ci .ico{width:22px;height:22px;color:var(--royal);flex-shrink:0;margin-top:3px}
+  .ci .k{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-soft);font-weight:600}
+  .ci .v{font-size:1.05rem;color:var(--text);font-weight:500;margin-top:3px}
+  .ci .v a{color:var(--text);transition:.25s}
+  .ci .v a:hover{color:var(--royal)}
+  .units{margin-top:40px;padding-top:34px;border-top:1px solid var(--line)}
+  .units-title{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--text-soft);font-weight:600;margin-bottom:26px}
+  .units-title .ico{width:20px;height:20px;color:var(--royal);flex-shrink:0}
+  .unit{padding:16px 0;border-bottom:1px solid var(--line)}
+  .unit:last-child{border-bottom:none}
+  .unit-name{font-family:var(--display);font-size:1.2rem;color:var(--navy);font-weight:500;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .unit-badge{font-family:var(--body);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    background:var(--royal);color:#fff;padding:4px 10px;border-radius:20px;line-height:1}
+  .unit-addr{font-size:.96rem;color:var(--text-soft);margin-top:5px;line-height:1.5}
+  form{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:40px}
+  .field{margin-bottom:22px}
+  .field label{display:block;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-soft);margin-bottom:9px}
+  .field input,.field textarea,.field select{
+    width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:3px;
+    font-family:var(--body);font-size:15px;color:var(--text);background:var(--paper);transition:.3s}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--royal);background:#fff;box-shadow:0 0 0 3px rgba(50,98,246,.1)}
+  .field textarea{resize:vertical;min-height:110px}
+  form .btn-primary{width:100%;justify-content:center;margin-top:4px}
+  .form-note{font-size:12.5px;color:var(--text-soft);margin-top:16px;text-align:center}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:#fff;padding:80px 0 36px}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.1)}
+  @media(max-width:820px){.foot-top{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.foot-top{grid-template-columns:1fr}}
+  .foot-brand .brand{margin-bottom:20px}
+  .foot-brand .brand .logo{height:26px}
+  .foot-brand .brand .logo-neg{display:block}
+  .foot-brand p{color:#9DB0CA;font-size:14.5px;max-width:280px}
+  .foot-col h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:20px;font-family:var(--body);font-weight:700}
+  .foot-col a{display:block;color:#B9C6DC;font-size:14.5px;margin-bottom:13px;transition:.3s}
+  .foot-col a:hover{color:#fff;padding-left:4px}
+  .foot-addr{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;padding:44px 0;
+    margin-top:8px;border-top:1px solid rgba(255,255,255,.1)}
+  @media(max-width:820px){.foot-addr{grid-template-columns:repeat(2,1fr);gap:28px}}
+  @media(max-width:520px){.foot-addr{grid-template-columns:1fr}}
+  .foot-unit-name{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:1.05rem;color:#fff;margin-bottom:8px}
+  .foot-unit-badge{font-family:var(--body);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    background:var(--royal);color:#fff;padding:3px 8px;border-radius:20px;line-height:1}
+  .foot-unit-addr{font-size:13px;color:#9DB0CA;line-height:1.5}
+  .foot-bot{display:flex;justify-content:space-between;align-items:center;padding-top:32px;flex-wrap:wrap;gap:16px;border-top:1px solid rgba(255,255,255,.1)}
+  .foot-bot p{color:#7E92AE;font-size:13px}
+  .foot-social{display:flex;gap:14px}
+  .foot-social a{width:38px;height:38px;border:1px solid rgba(255,255,255,.16);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;color:#B9C6DC;transition:.3s}
+  .foot-social a:hover{background:var(--royal);border-color:var(--royal);color:#fff}
+  .foot-social svg{width:17px;height:17px}
+
+  /* ---------- reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:.9s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+  }
+/* ========== PÁGINA BLOG (listagem) ========== */
+.page-hero{
+  background:radial-gradient(120% 130% at 78% 12%,#0A5AB4 0%,#00458C 42%,#001320 100%);
+  color:#fff;padding:170px 0 90px;position:relative;overflow:hidden;
+}
+.page-hero .hero-glow{top:-160px;right:-120px}
+.page-hero .wrap{position:relative;z-index:2}
+.page-hero .eyebrow{color:#8DB0FF}
+.page-hero .eyebrow::before{background:#8DB0FF}
+.page-hero h1{font-size:clamp(2.6rem,5.5vw,4.4rem);color:#fff;font-weight:300;margin:22px 0 20px}
+.page-hero h1 em{font-style:normal;font-weight:500;color:var(--royal-soft)}
+.page-hero p{color:#C7D6EE;font-size:1.15rem;max-width:560px}
+
+/* filtros de categoria */
+.blog-filters{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px}
+.filter{font-family:var(--body);font-size:14px;font-weight:600;padding:10px 20px;border-radius:30px;
+  border:1px solid var(--line);background:var(--white);color:var(--text-soft);cursor:pointer;transition:.3s}
+.filter:hover{border-color:var(--navy);color:var(--navy)}
+.filter.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* grid de todos os posts */
+.posts-all{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+@media(max-width:900px){.posts-all{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.posts-all{grid-template-columns:1fr}}
+.card{background:var(--white);border:1px solid var(--line);border-radius:6px;overflow:hidden;
+  text-decoration:none;color:inherit;transition:.4s var(--ease);display:flex;flex-direction:column}
+.card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -32px rgba(11,27,43,.3);border-color:transparent}
+.card-media{height:180px;position:relative;background:linear-gradient(150deg,#0A5AB4,#001320)}
+.card-media::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 120% at 80% 10%,rgba(50,98,246,.32),transparent 60%)}
+.card-media.g2{background:linear-gradient(150deg,#00448B,#002852)}
+.card-media.g3{background:linear-gradient(150deg,#00458C,#001320)}
+.card-body{padding:26px;flex-grow:1;display:flex;flex-direction:column}
+.card-body h3{font-family:var(--display);font-weight:400;font-size:1.28rem;color:var(--navy);line-height:1.25;margin:12px 0 12px}
+.card-body p{color:var(--text-soft);font-size:.98rem;flex-grow:1}
+.card-body .post-meta{margin-top:18px;margin-bottom:0}
+
+/* ========== PÁGINA POST (modelo) ========== */
+.post-hero{
+  background:radial-gradient(120% 130% at 78% 12%,#0A5AB4 0%,#00458C 42%,#001320 100%);
+  color:#fff;padding:160px 0 80px;position:relative;overflow:hidden;
+}
+.post-hero .wrap{position:relative;z-index:2;max-width:820px}
+.back-lk{display:inline-flex;align-items:center;gap:8px;color:#8DB0FF;font-size:14px;font-weight:600;margin-bottom:30px;text-decoration:none;transition:.3s}
+.back-lk:hover{color:#fff}
+.post-hero .post-cat{position:static;display:inline-block;margin-bottom:22px}
+.post-hero h1{font-size:clamp(2.2rem,4.4vw,3.4rem);color:#fff;font-weight:400;line-height:1.15;font-family:var(--display)}
+.post-hero .post-meta{color:#9DB8DC;margin-top:26px;display:flex;gap:20px;flex-wrap:wrap}
+.article{padding:80px 0 100px}
+.article .wrap{max-width:720px}
+.article-cover{height:360px;border-radius:8px;margin:-140px auto 60px;max-width:820px;position:relative;z-index:3;
+  background:linear-gradient(150deg,#0A5AB4,#001320);box-shadow:0 40px 80px -40px rgba(0,19,33,.5)}
+.prose p{font-size:1.14rem;line-height:1.75;color:#243B54;margin-bottom:26px}
+.prose h2{font-family:var(--display);font-weight:500;font-size:1.9rem;color:var(--navy);margin:48px 0 20px}
+.prose h3{font-family:var(--display);font-weight:500;font-size:1.4rem;color:var(--navy);margin:36px 0 16px}
+.prose blockquote{border-left:3px solid var(--royal);padding:6px 0 6px 28px;margin:36px 0;
+  font-family:var(--display);font-style:italic;font-size:1.4rem;color:var(--navy);line-height:1.4}
+.prose ul{margin:0 0 26px 22px}
+.prose li{font-size:1.1rem;line-height:1.7;color:#243B54;margin-bottom:10px}
+.prose strong{color:var(--navy);font-weight:600}
+.article-cta{margin-top:64px;padding:44px;background:var(--mist);border-radius:8px;text-align:center}
+.article-cta h3{font-family:var(--display);font-weight:400;font-size:1.6rem;color:var(--navy);margin-bottom:14px}
+.article-cta p{color:var(--text-soft);margin-bottom:26px}
+
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="header" class="on-dark">
+  <div class="wrap nav">
+    <a href="#top" class="brand"><svg class="logo logo-neg" viewBox="0 0 2466 265" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grupo Beiramar"><path d="M851.474 149.402H959.987V111.057H851.474V39.3625H986.676V0.138672H799.021V264.114H988.48V223.502H851.474V149.402Z" fill="#EEF5FF"/>
+<path d="M1083.27 0.138672H1030.77V264.114H1083.27V0.138672Z" fill="#EEF5FF"/>
+<path d="M1354.02 77.7539C1354.38 66.8702 1352.19 56.0525 1347.64 46.1602C1343.09 36.2679 1336.29 27.5737 1327.79 20.7682C1309.89 6.5218 1287.92 0.138672 1251.61 0.138672H1138.15V264.114H1190.74V38.2524H1247.68C1284.68 38.2524 1299.34 57.1706 1299.34 77.06C1299.34 109.808 1269.18 117.81 1243.33 117.81H1235.65L1297.12 264.114H1352.63L1301.29 147.737C1316.18 141.816 1353.83 127.2 1353.83 77.7539" fill="#EEF5FF"/>
+<path d="M657.812 224.658H583.481V37.79H652.447C664.381 37.79 696.343 42.1379 696.343 73.0359C696.343 96.1632 679.321 111.427 653.881 111.427H626.729V149.078H657.812C686.722 149.078 704.067 165.221 704.067 186.591C704.067 211.106 684.686 224.658 657.812 224.658ZM695.464 127.524C747.963 116.423 748.425 76.4126 748.425 68.503C748.574 52.6067 742.804 37.2236 732.236 25.3475C709.941 -1.98503e-05 676.222 0 653.603 0H533.526V264.114H667.433C689.636 264.114 711.653 261.801 733.947 244.825C749.258 232.846 757.584 211.106 757.584 192.095C757.793 176.145 751.827 160.731 740.932 149.078C725.668 133.167 707.259 130.114 695.464 127.663" fill="#EEF5FF"/>
+<path d="M2062.46 0.138672L1965.33 264.114H2010.52L2012 260.275L2088.69 45.3294L2136.38 175.629H2072.59V176.461C2134.34 184.741 2162.1 246.953 2165.1 254.4L2167.46 261.015L2168.57 264.114H2224.68L2126.85 0.138672H2062.46Z" fill="#EEF5FF"/>
+<path d="M1468.11 0.138672L1370.98 264.114H1416.03L1417.42 260.275L1494.43 45.3294L1542.08 175.629H1478.24V176.461C1543.97 185.25 1571.45 255.88 1571.45 255.88L1573.94 262.633L1574.41 264.114H1630.56L1532.45 0.138672H1468.11Z" fill="#EEF5FF"/>
+<path d="M2464.94 77.7539C2465.3 66.8756 2463.12 56.0639 2458.57 46.1736C2454.03 36.2833 2447.25 27.5856 2438.76 20.7682C2420.77 6.5218 2398.94 0.138672 2362.58 0.138672H2249.21V264.114H2301.67V38.2524H2358.65C2395.65 38.2524 2410.32 57.1706 2410.32 77.06C2410.32 109.808 2380.16 117.81 2354.21 117.81H2346.67L2408.33 264.114H2463.83L2412.58 147.737C2427.52 141.816 2465.08 127.2 2465.08 77.7539" fill="#EEF5FF"/>
+<path d="M1797.92 170.356L1737.14 0.138672H1654.8V264.16H1697.64V32.9794L1778.67 264.16H1806.24L1887.14 32.9794V264.16H1941.03V0.138672H1858.19L1797.92 170.356Z" fill="#EEF5FF"/>
+<g clip-path="url(#clip_hneg)">
+<path d="M493.526 138.936L493.517 140.531C492.65 208.955 436.93 264.139 368.301 264.139H125.226C56.0556 264.138 0 208.082 0 138.912V125.365C9.16384e-07 56.1952 56.0556 0.139861 125.226 0.139648H493.526V138.936ZM101.43 94.4736C95.6923 94.4737 90.7293 95.612 86.54 97.8887C82.4418 100.074 79.2534 103.034 76.9766 106.768C74.7909 110.501 73.6983 114.646 73.6982 119.199C73.6982 123.753 74.7909 127.897 76.9766 131.631C78.1797 133.604 79.6398 135.359 81.3516 136.899L69.5996 148.98V152.122C70.7836 153.306 72.3326 154.491 74.2451 155.675C75.2007 156.266 76.2473 156.835 77.3848 157.381C74.8 159.339 72.7972 161.502 71.376 163.871C69.7367 166.512 68.917 169.427 68.917 172.614C68.917 176.895 70.2378 180.538 72.8789 183.543C75.6111 186.639 79.391 188.962 84.2178 190.51C89.1356 192.058 94.8279 192.832 101.294 192.832C108.397 192.832 114.226 191.739 118.779 189.554C123.333 187.368 126.703 184.545 128.889 181.084C131.166 177.714 132.304 174.253 132.304 170.701C132.304 166.603 131.394 163.142 129.572 160.319C127.751 157.496 124.927 155.264 121.102 153.625C117.277 151.986 112.358 150.939 106.348 150.483C102.796 150.119 99.8365 149.801 97.4688 149.527C95.1919 149.163 93.2787 148.798 91.7305 148.434C90.2735 148.069 89.0437 147.705 88.042 147.341C87.688 147.212 87.3407 147.081 86.998 146.952L91.123 142.369C94.2248 143.313 97.6594 143.789 101.43 143.789C107.167 143.789 112.085 142.696 116.184 140.511C120.373 138.325 123.561 135.365 125.747 131.631C127.933 127.897 129.025 123.753 129.025 119.199C129.025 114.834 128.018 110.847 126.01 107.235L137.905 106.085V96.1123H112.174C108.986 95.0197 105.404 94.4736 101.43 94.4736ZM316.2 94.4736C312.466 94.4736 309.006 95.0195 305.818 96.1123C302.722 97.2052 299.943 98.7532 297.484 100.757C295.117 102.76 293.067 105.174 291.337 107.997H290.791L289.698 96.1123H274.261V191.193H292.703V155.128C294.98 157.951 298.031 160.41 301.856 162.505C305.772 164.508 310.371 165.511 315.653 165.511C322.302 165.511 328.039 164.007 332.866 161.002C337.693 157.906 341.427 153.671 344.068 148.298C346.709 142.925 348.03 136.823 348.03 129.992C348.03 123.162 346.709 117.059 344.068 111.686C341.427 106.312 337.739 102.123 333.003 99.1182C328.267 96.0217 322.666 94.4736 316.2 94.4736ZM92.4111 161.73C95.5005 162.217 98.9618 162.614 102.796 162.915C107.805 163.279 111.175 164.099 112.905 165.374C114.636 166.74 115.501 168.652 115.501 171.111C115.501 172.842 114.954 174.344 113.861 175.619C112.768 176.985 111.175 178.033 109.08 178.762C106.986 179.49 104.39 179.854 101.294 179.854C98.1975 179.854 95.4646 179.49 93.0967 178.762C90.7289 178.124 88.8622 177.168 87.4961 175.893C86.2211 174.618 85.583 173.069 85.583 171.248C85.583 168.789 86.494 166.603 88.3154 164.69C89.3369 163.618 90.7022 162.631 92.4111 161.73ZM195.385 96.1123V134.09C195.385 140.92 196.432 146.704 198.526 151.439C200.621 156.084 203.627 159.59 207.543 161.958C211.459 164.326 216.195 165.511 221.75 165.511C227.397 165.511 232.087 164.417 235.821 162.231C239.646 159.955 242.607 156.904 244.701 153.079H245.247L246.887 163.871H262.597V96.1123H244.154V131.085C244.154 135.001 243.471 138.37 242.105 141.193C240.739 144.017 238.827 146.203 236.368 147.751C234 149.208 231.222 149.937 228.034 149.937C223.116 149.936 219.473 148.434 217.105 145.429C214.829 142.423 213.69 138.097 213.69 132.451V96.1123H195.385ZM389.744 94.4736C383.278 94.4737 377.404 95.9761 372.122 98.9814C366.84 101.987 362.65 106.176 359.554 111.55C356.457 116.832 354.909 122.98 354.909 129.992C354.909 136.913 356.412 143.06 359.417 148.434C362.513 153.807 366.703 157.997 371.985 161.002C377.268 164.007 383.187 165.511 389.744 165.511C396.301 165.511 402.176 164.007 407.367 161.002C412.649 157.997 416.839 153.853 419.936 148.57C423.032 143.197 424.58 137.004 424.58 129.992C424.58 122.98 423.032 116.832 419.936 111.55C416.93 106.177 412.786 101.987 407.504 98.9814C402.222 95.976 396.301 94.4736 389.744 94.4736ZM189.869 94.4736C186.044 94.4736 182.583 94.8825 179.486 95.7021C176.481 96.4308 173.795 97.9798 171.427 100.348C169.059 102.624 166.873 106.176 164.869 111.003H164.323L162.684 96.1123H146.974V163.871H165.416V133.134C165.416 129.673 165.826 126.713 166.646 124.254C167.556 121.795 168.831 119.837 170.471 118.38C172.11 116.832 174.114 115.739 176.481 115.102C178.94 114.373 181.718 114.009 184.814 114.009H189.869V94.4736ZM310.872 109.637C314.606 109.637 317.839 110.502 320.571 112.232C323.395 113.963 325.535 116.376 326.992 119.473C328.54 122.478 329.314 126.03 329.314 130.128C329.314 134.135 328.54 137.688 326.992 140.784C325.535 143.789 323.394 146.157 320.571 147.888C317.839 149.618 314.606 150.483 310.872 150.483C307.229 150.483 303.996 149.618 301.173 147.888C298.35 146.157 296.164 143.789 294.616 140.784C293.068 137.688 292.294 134.135 292.294 130.128C292.294 126.03 293.068 122.478 294.616 119.473C296.164 116.376 298.35 113.963 301.173 112.232C303.996 110.502 307.229 109.637 310.872 109.637ZM389.881 110.047C392.704 110.047 395.3 110.775 397.668 112.232C400.127 113.69 402.085 115.921 403.542 118.927C404.999 121.841 405.728 125.53 405.728 129.992C405.727 134.454 404.999 138.188 403.542 141.193C402.085 144.108 400.127 146.294 397.668 147.751C395.3 149.208 392.613 149.937 389.607 149.937C386.784 149.936 384.143 149.208 381.685 147.751C379.317 146.294 377.404 144.108 375.947 141.193C374.49 138.188 373.761 134.455 373.761 129.992C373.761 125.53 374.49 121.841 375.947 118.927C377.404 115.921 379.362 113.69 381.821 112.232C384.28 110.775 386.967 110.047 389.881 110.047ZM101.43 107.997C104.981 107.997 107.85 108.954 110.036 110.866C112.313 112.688 113.452 115.465 113.452 119.199C113.452 122.933 112.313 125.756 110.036 127.669C107.85 129.49 104.937 130.401 101.294 130.401C97.7421 130.401 94.8276 129.49 92.5508 127.669C90.3651 125.756 89.2715 122.933 89.2715 119.199C89.2715 115.465 90.3651 112.688 92.5508 110.866C94.8275 108.954 97.7871 107.997 101.43 107.997Z" fill="#EEF5FF"/>
+</g>
+<defs>
+<clipPath id="clip_hneg">
+<rect width="493.526" height="264.021" fill="white" transform="translate(0 0.138184)"/>
+</clipPath>
+</defs></svg><svg class="logo logo-color" viewBox="0 0 2466 265" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grupo Beiramar"><path d="M851.474 149.402H959.987V111.057H851.474V39.3625H986.676V0.138672H799.021V264.114H988.48V223.502H851.474V149.402Z" fill="#00458C"/>
+<path d="M1083.27 0.138672H1030.77V264.114H1083.27V0.138672Z" fill="#00458C"/>
+<path d="M1354.02 77.7539C1354.38 66.8702 1352.19 56.0525 1347.64 46.1602C1343.09 36.2679 1336.29 27.5737 1327.79 20.7682C1309.89 6.5218 1287.92 0.138672 1251.61 0.138672H1138.15V264.114H1190.74V38.2524H1247.68C1284.68 38.2524 1299.34 57.1706 1299.34 77.06C1299.34 109.808 1269.18 117.81 1243.33 117.81H1235.65L1297.12 264.114H1352.63L1301.29 147.737C1316.18 141.816 1353.83 127.2 1353.83 77.7539" fill="#00458C"/>
+<path d="M657.812 224.658H583.481V37.79H652.447C664.381 37.79 696.343 42.1379 696.343 73.0359C696.343 96.1632 679.321 111.427 653.881 111.427H626.729V149.078H657.812C686.722 149.078 704.067 165.221 704.067 186.591C704.067 211.106 684.686 224.658 657.812 224.658ZM695.464 127.524C747.963 116.423 748.425 76.4126 748.425 68.503C748.574 52.6067 742.804 37.2236 732.236 25.3475C709.941 -1.98503e-05 676.222 0 653.603 0H533.526V264.114H667.433C689.636 264.114 711.653 261.801 733.947 244.825C749.258 232.846 757.584 211.106 757.584 192.095C757.793 176.145 751.827 160.731 740.932 149.078C725.668 133.167 707.259 130.114 695.464 127.663" fill="#00458C"/>
+<path d="M2062.46 0.138672L1965.33 264.114H2010.52L2012 260.275L2088.69 45.3294L2136.38 175.629H2072.59V176.461C2134.34 184.741 2162.1 246.953 2165.1 254.4L2167.46 261.015L2168.57 264.114H2224.68L2126.85 0.138672H2062.46Z" fill="#00458C"/>
+<path d="M1468.11 0.138672L1370.98 264.114H1416.03L1417.42 260.275L1494.43 45.3294L1542.08 175.629H1478.24V176.461C1543.97 185.25 1571.45 255.88 1571.45 255.88L1573.94 262.633L1574.41 264.114H1630.56L1532.45 0.138672H1468.11Z" fill="#00458C"/>
+<path d="M2464.94 77.7539C2465.3 66.8756 2463.12 56.0639 2458.57 46.1736C2454.03 36.2833 2447.25 27.5856 2438.76 20.7682C2420.77 6.5218 2398.94 0.138672 2362.58 0.138672H2249.21V264.114H2301.67V38.2524H2358.65C2395.65 38.2524 2410.32 57.1706 2410.32 77.06C2410.32 109.808 2380.16 117.81 2354.21 117.81H2346.67L2408.33 264.114H2463.83L2412.58 147.737C2427.52 141.816 2465.08 127.2 2465.08 77.7539" fill="#00458C"/>
+<path d="M1797.92 170.356L1737.14 0.138672H1654.8V264.16H1697.64V32.9794L1778.67 264.16H1806.24L1887.14 32.9794V264.16H1941.03V0.138672H1858.19L1797.92 170.356Z" fill="#00458C"/>
+<g clip-path="url(#clip_hcolor)">
+<path d="M493.526 138.936L493.517 140.531C492.65 208.955 436.93 264.139 368.301 264.139H125.226C56.0556 264.138 0 208.082 0 138.912V125.365C9.16384e-07 56.1952 56.0556 0.139861 125.226 0.139648H493.526V138.936ZM101.43 94.4736C95.6923 94.4737 90.7293 95.612 86.54 97.8887C82.4418 100.074 79.2534 103.034 76.9766 106.768C74.7909 110.501 73.6983 114.646 73.6982 119.199C73.6982 123.753 74.7909 127.897 76.9766 131.631C78.1797 133.604 79.6398 135.359 81.3516 136.899L69.5996 148.98V152.122C70.7836 153.306 72.3326 154.491 74.2451 155.675C75.2007 156.266 76.2473 156.835 77.3848 157.381C74.8 159.339 72.7972 161.502 71.376 163.871C69.7367 166.512 68.917 169.427 68.917 172.614C68.917 176.895 70.2378 180.538 72.8789 183.543C75.6111 186.639 79.391 188.962 84.2178 190.51C89.1356 192.058 94.8279 192.832 101.294 192.832C108.397 192.832 114.226 191.739 118.779 189.554C123.333 187.368 126.703 184.545 128.889 181.084C131.166 177.714 132.304 174.253 132.304 170.701C132.304 166.603 131.394 163.142 129.572 160.319C127.751 157.496 124.927 155.264 121.102 153.625C117.277 151.986 112.358 150.939 106.348 150.483C102.796 150.119 99.8365 149.801 97.4688 149.527C95.1919 149.163 93.2787 148.798 91.7305 148.434C90.2735 148.069 89.0437 147.705 88.042 147.341C87.688 147.212 87.3407 147.081 86.998 146.952L91.123 142.369C94.2248 143.313 97.6594 143.789 101.43 143.789C107.167 143.789 112.085 142.696 116.184 140.511C120.373 138.325 123.561 135.365 125.747 131.631C127.933 127.897 129.025 123.753 129.025 119.199C129.025 114.834 128.018 110.847 126.01 107.235L137.905 106.085V96.1123H112.174C108.986 95.0197 105.404 94.4736 101.43 94.4736ZM316.2 94.4736C312.466 94.4736 309.006 95.0195 305.818 96.1123C302.722 97.2052 299.943 98.7532 297.484 100.757C295.117 102.76 293.067 105.174 291.337 107.997H290.791L289.698 96.1123H274.261V191.193H292.703V155.128C294.98 157.951 298.031 160.41 301.856 162.505C305.772 164.508 310.371 165.511 315.653 165.511C322.302 165.511 328.039 164.007 332.866 161.002C337.693 157.906 341.427 153.671 344.068 148.298C346.709 142.925 348.03 136.823 348.03 129.992C348.03 123.162 346.709 117.059 344.068 111.686C341.427 106.312 337.739 102.123 333.003 99.1182C328.267 96.0217 322.666 94.4736 316.2 94.4736ZM92.4111 161.73C95.5005 162.217 98.9618 162.614 102.796 162.915C107.805 163.279 111.175 164.099 112.905 165.374C114.636 166.74 115.501 168.652 115.501 171.111C115.501 172.842 114.954 174.344 113.861 175.619C112.768 176.985 111.175 178.033 109.08 178.762C106.986 179.49 104.39 179.854 101.294 179.854C98.1975 179.854 95.4646 179.49 93.0967 178.762C90.7289 178.124 88.8622 177.168 87.4961 175.893C86.2211 174.618 85.583 173.069 85.583 171.248C85.583 168.789 86.494 166.603 88.3154 164.69C89.3369 163.618 90.7022 162.631 92.4111 161.73ZM195.385 96.1123V134.09C195.385 140.92 196.432 146.704 198.526 151.439C200.621 156.084 203.627 159.59 207.543 161.958C211.459 164.326 216.195 165.511 221.75 165.511C227.397 165.511 232.087 164.417 235.821 162.231C239.646 159.955 242.607 156.904 244.701 153.079H245.247L246.887 163.871H262.597V96.1123H244.154V131.085C244.154 135.001 243.471 138.37 242.105 141.193C240.739 144.017 238.827 146.203 236.368 147.751C234 149.208 231.222 149.937 228.034 149.937C223.116 149.936 219.473 148.434 217.105 145.429C214.829 142.423 213.69 138.097 213.69 132.451V96.1123H195.385ZM389.744 94.4736C383.278 94.4737 377.404 95.9761 372.122 98.9814C366.84 101.987 362.65 106.176 359.554 111.55C356.457 116.832 354.909 122.98 354.909 129.992C354.909 136.913 356.412 143.06 359.417 148.434C362.513 153.807 366.703 157.997 371.985 161.002C377.268 164.007 383.187 165.511 389.744 165.511C396.301 165.511 402.176 164.007 407.367 161.002C412.649 157.997 416.839 153.853 419.936 148.57C423.032 143.197 424.58 137.004 424.58 129.992C424.58 122.98 423.032 116.832 419.936 111.55C416.93 106.177 412.786 101.987 407.504 98.9814C402.222 95.976 396.301 94.4736 389.744 94.4736ZM189.869 94.4736C186.044 94.4736 182.583 94.8825 179.486 95.7021C176.481 96.4308 173.795 97.9798 171.427 100.348C169.059 102.624 166.873 106.176 164.869 111.003H164.323L162.684 96.1123H146.974V163.871H165.416V133.134C165.416 129.673 165.826 126.713 166.646 124.254C167.556 121.795 168.831 119.837 170.471 118.38C172.11 116.832 174.114 115.739 176.481 115.102C178.94 114.373 181.718 114.009 184.814 114.009H189.869V94.4736ZM310.872 109.637C314.606 109.637 317.839 110.502 320.571 112.232C323.395 113.963 325.535 116.376 326.992 119.473C328.54 122.478 329.314 126.03 329.314 130.128C329.314 134.135 328.54 137.688 326.992 140.784C325.535 143.789 323.394 146.157 320.571 147.888C317.839 149.618 314.606 150.483 310.872 150.483C307.229 150.483 303.996 149.618 301.173 147.888C298.35 146.157 296.164 143.789 294.616 140.784C293.068 137.688 292.294 134.135 292.294 130.128C292.294 126.03 293.068 122.478 294.616 119.473C296.164 116.376 298.35 113.963 301.173 112.232C303.996 110.502 307.229 109.637 310.872 109.637ZM389.881 110.047C392.704 110.047 395.3 110.775 397.668 112.232C400.127 113.69 402.085 115.921 403.542 118.927C404.999 121.841 405.728 125.53 405.728 129.992C405.727 134.454 404.999 138.188 403.542 141.193C402.085 144.108 400.127 146.294 397.668 147.751C395.3 149.208 392.613 149.937 389.607 149.937C386.784 149.936 384.143 149.208 381.685 147.751C379.317 146.294 377.404 144.108 375.947 141.193C374.49 138.188 373.761 134.455 373.761 129.992C373.761 125.53 374.49 121.841 375.947 118.927C377.404 115.921 379.362 113.69 381.821 112.232C384.28 110.775 386.967 110.047 389.881 110.047ZM101.43 107.997C104.981 107.997 107.85 108.954 110.036 110.866C112.313 112.688 113.452 115.465 113.452 119.199C113.452 122.933 112.313 125.756 110.036 127.669C107.85 129.49 104.937 130.401 101.294 130.401C97.7421 130.401 94.8276 129.49 92.5508 127.669C90.3651 125.756 89.2715 122.933 89.2715 119.199C89.2715 115.465 90.3651 112.688 92.5508 110.866C94.8275 108.954 97.7871 107.997 101.43 107.997Z" fill="#667482"/>
+</g>
+<defs>
+<clipPath id="clip_hcolor">
+<rect width="493.526" height="264.021" fill="white" transform="translate(0 0.138184)"/>
+</clipPath>
+</defs></svg></a>
+    <nav class="navlinks">
+      <a href="#top">Início</a>
+      <a href="#grupo">Nossa História</a>
+      <a href="#frentes">Empresas do Grupo</a>
+      <a href="#portfolio">Portfólio</a>
+      <a href="#blog">Blog</a>
+      <a href="#contato" class="nav-cta">Fale com o Grupo</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close" id="closeMenu" aria-label="Fechar menu">&times;</button>
+  <a href="#top">Início</a>
+  <a href="#grupo">Nossa História</a>
+  <a href="#frentes">Empresas do Grupo</a>
+  <a href="#portfolio">Portfólio</a>
+  <a href="#blog">Blog</a>
+  <a href="#contato">Fale com o Grupo</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-glow"></div>
+  <div class="hero-seal" aria-label="45 anos">
+    <svg viewBox="0 0 1503 949" xmlns="http://www.w3.org/2000/svg" fill="none" role="img" aria-label="Selo 45 anos"><path d="M639.5 11.0039H437.342C428.207 11.0039 419.668 15.5385 414.551 23.1064L15.7233 613.051C12.6476 617.6 11.004 622.966 11.004 628.458V751.399C11.004 766.592 23.3205 778.908 38.5138 778.908H419.594C434.787 778.908 447.103 791.225 447.103 806.418V910.275C447.103 925.469 459.42 937.785 474.613 937.785H611.99C627.184 937.785 639.5 925.469 639.5 910.275V898.066V879.554V859.574" stroke="#EEF5FF" stroke-width="22.0079" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1225.87 774.756C1211.92 799.97 1194.91 822.719 1174.84 842.994C1145.77 871.504 1111.13 893.965 1070.95 910.38C1031.61 925.931 988.857 933.707 942.682 933.707C875.129 933.707 817.411 922.04 769.526 898.714C721.641 874.524 684.441 842.13 657.933 801.525C652.377 792.832 647.334 783.905 642.792 774.756M629.466 493.578L695.673 25.3247C696.835 17.1092 703.799 11.0039 712.013 11.0039H1194.25C1203.36 11.0039 1210.75 18.4758 1210.75 27.6862V164.097C1210.75 173.307 1203.36 180.774 1194.25 180.774H853.753C845.817 180.775 839.007 186.482 837.537 194.362L816.615 306.556C813.611 322.675 835.575 335.845 849.976 328.271C858.802 323.628 868.327 319.388 878.549 315.551C909.333 304.32 943.11 298.701 979.879 298.701C1029.47 298.701 1072.23 307.344 1108.14 324.623C1144.06 341.038 1173.98 363.932 1197.93 393.306C1221.87 422.68 1239.4 455.513 1250.52 491.798C1252.42 497.995 1254.15 504.23 1255.72 510.503" stroke="#EEF5FF" stroke-width="22.0079" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1014.75 617.632L1013.39 616.952C1026.31 608.113 1029.71 608.793 1029.71 616.272C1029.71 617.632 1026.99 621.031 1022.23 625.79C1008.63 639.388 982.798 659.104 966.481 668.623C936.566 685.62 919.569 687.659 905.971 676.781C898.493 670.662 897.813 668.623 897.813 658.425V646.867L881.496 659.104C850.221 682.9 827.785 691.059 815.547 683.58C798.55 673.382 821.666 631.909 854.98 612.873C864.499 607.434 873.337 604.714 880.816 604.714C890.334 604.714 897.813 608.793 901.892 616.952L905.291 623.751L912.09 618.312C919.569 612.193 922.288 611.513 926.368 615.592C929.087 618.312 928.407 621.031 922.288 631.909C913.45 648.226 910.73 660.464 914.81 666.583C917.529 669.983 919.569 670.662 927.727 669.983C943.365 668.623 962.401 658.425 993.676 633.269C1002.51 626.47 1009.31 621.031 1014.75 617.632ZM875.377 646.187L876.736 646.867C892.374 635.309 893.054 634.629 891.014 627.83C889.654 623.751 887.615 619.671 886.255 618.992C885.575 618.312 884.215 617.632 882.855 617.632C867.898 616.952 830.505 648.906 825.745 668.623C823.706 677.461 827.785 676.781 845.462 666.583C852.941 661.824 866.538 652.986 875.377 646.187Z" fill="#EEF5FF"/>
+<path d="M1230.09 613.552L1232.13 610.833C1232.81 612.873 1228.73 617.632 1221.25 623.751C1202.21 640.068 1164.82 665.223 1140.34 675.422C1115.87 686.3 1099.55 684.94 1091.39 672.022C1086.63 664.544 1087.99 656.385 1096.83 633.269C1100.23 624.431 1102.27 616.952 1101.59 616.272C1098.19 613.552 1064.88 633.269 1046.52 648.906C1028.16 664.544 1003.01 681.541 998.249 681.541C995.53 681.541 991.45 680.181 989.411 678.141C986.691 676.101 986.011 672.702 986.691 667.943C989.411 652.986 1015.93 608.793 1025.44 604.034C1028.16 602.674 1030.2 602.674 1032.92 605.394C1037 608.793 1037 609.473 1030.88 617.632C1022.04 629.87 1005.73 657.065 1003.69 663.184C1002.33 666.583 1009.81 661.824 1028.84 646.867C1073.72 612.193 1098.87 600.635 1110.43 609.473C1117.23 614.232 1116.55 623.751 1109.07 642.107C1102.27 658.425 1100.91 671.342 1105.67 672.702C1117.91 676.101 1154.62 657.065 1202.21 623.071C1221.25 609.473 1227.37 607.434 1230.09 613.552Z" fill="#EEF5FF"/>
+<path d="M1380.81 611.513L1381.49 612.873C1384.21 616.272 1378.77 623.071 1359.73 633.949C1324.38 654.345 1297.18 661.144 1269.31 661.144C1257.75 661.144 1255.03 661.824 1253.67 664.544C1251.63 669.983 1233.28 684.94 1224.44 687.659C1212.2 691.739 1204.72 691.059 1195.88 684.94C1180.24 673.382 1184.32 649.586 1206.08 623.071C1211.52 616.272 1217.64 610.153 1219.68 609.473C1221.72 608.793 1225.8 606.754 1229.2 604.714C1233.28 601.995 1238.71 600.635 1244.15 600.635C1249.59 600.635 1255.03 601.995 1258.43 604.714C1269.31 614.912 1270.67 623.071 1264.55 638.708L1261.15 648.226H1272.03C1294.46 648.226 1323.02 640.068 1352.93 621.711C1370.61 610.833 1377.41 607.434 1380.81 611.513ZM1235.31 665.223L1240.07 659.784L1233.96 656.385C1229.2 652.986 1222.4 648.906 1219.68 644.827L1214.24 637.348L1208.8 646.867C1201.32 659.784 1199.28 668.623 1202.68 674.742C1206.08 680.861 1210.84 680.861 1221.72 675.422C1226.48 673.382 1232.6 668.623 1235.31 665.223ZM1250.95 635.309H1251.63C1254.35 622.391 1252.31 615.592 1245.51 614.912C1244.83 614.912 1244.15 614.912 1243.47 614.912C1236.67 615.592 1229.2 624.431 1229.2 631.909C1229.2 636.668 1231.24 639.388 1236.67 643.467C1240.75 646.187 1244.83 647.547 1246.19 646.867C1247.55 646.187 1249.59 640.748 1250.95 635.309Z" fill="#EEF5FF"/>
+<path d="M1479.14 614.912L1478.46 615.592C1497.5 608.113 1502.94 608.113 1502.94 614.912C1502.94 618.312 1498.86 621.031 1484.58 626.47C1474.38 630.549 1451.27 638.708 1429.51 646.867L1390.76 662.504L1389.4 673.382C1387.36 688.339 1377.16 701.257 1363.56 706.696C1351.32 711.455 1337.73 712.135 1330.93 708.056C1324.81 704.656 1324.81 693.098 1330.93 686.3C1335.69 680.861 1354.04 667.943 1364.92 661.824L1370.36 659.104L1366.28 641.428C1362.2 625.79 1362.2 623.071 1365.6 615.592C1369.68 606.754 1376.48 601.315 1382.6 601.315C1383.96 601.315 1385.32 601.315 1386.68 601.995C1393.48 604.714 1393.48 608.793 1387.36 612.193C1379.88 616.272 1377.84 624.431 1381.24 637.348C1384.64 650.266 1386 652.306 1390.76 648.906C1392.8 647.547 1409.79 640.748 1428.83 633.269C1447.87 625.79 1468.94 618.992 1479.14 614.912ZM1357.44 693.098L1356.76 692.419C1366.96 685.62 1375.12 672.022 1369 672.022C1366.28 672.022 1342.49 689.699 1339.77 693.778C1337.73 697.178 1338.41 697.858 1343.85 697.858C1347.25 697.858 1353.36 695.818 1357.44 693.098Z" fill="#EEF5FF"/>
+<path d="M646.14 773.751C646.14 773.751 765.712 829.711 853.883 821.218C923.134 814.547 964.688 767.144 1033.61 757.656C1106.31 747.649 1224.69 773.751 1224.69 773.751" stroke="#EEF5FF" stroke-width="22.0079" stroke-linecap="round"/>
+<path d="M630.315 493.907L653.882 506.349C653.882 506.349 739.549 559.279 827.719 550.786C896.971 544.116 982.564 500.6 1051.49 491.112C1124.19 481.105 1232.44 506.349 1232.44 506.349L1257.18 512.903" stroke="#EEF5FF" stroke-width="22.0079" stroke-linecap="round"/></svg>
+  </div>
+  <div class="hero-arcs">
+    <svg viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="600" cy="600" r="300" stroke="#4E74D8" stroke-width="1"/>
+      <circle cx="600" cy="600" r="450" stroke="#3A5CB8" stroke-width="1"/>
+      <circle cx="600" cy="600" r="600" stroke="#0A5AB4" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <span class="eyebrow">Grupo imobiliário · Brasília · Desde 1981</span>
+      <h1><b>Desde 1981</b>, um grupo <em>full service</em> com atuação pelo país. </h1>
+      <p>Um grupo, quatro frentes e uma só assinatura de solidez.</p>
+      <div class="hero-cta">
+        <a href="#frentes" class="btn btn-primary" style="background:#fff;color:var(--navy)">Conheça as frentes <span class="arrow">→</span></a>
+        <a href="#grupo" class="btn btn-ghost">Nossa história</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Explore</span><span class="line"></span></div>
+</section>
+
+<!-- ============ BIG NUMBERS ============ -->
+<section class="bignumbers">
+  <svg class="bignum-arcs" viewBox="0 0 1200 1200" fill="none" aria-hidden="true">
+    <circle cx="600" cy="600" r="320" stroke="#0A5AB4" stroke-width="1"/>
+    <circle cx="600" cy="600" r="500" stroke="#00458C" stroke-width="1"/>
+    <circle cx="600" cy="600" r="700" stroke="#003168" stroke-width="1"/>
+  </svg>
+  <div class="wrap">
+
+    <!-- bloco 1 -->
+    <div class="bignum-block reveal">
+      <div class="bignum-lede">
+        <span class="bignum-brand"><svg class="logo bignum-logo bignum-logo-imoveis" viewBox="0 0 381 39" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grupo Beiramar Imóveis"><g clip-path="url(#clip0_2589_1708_bnimoveis)">
+<path d="M45.8275 21.2705H61.2774V15.811H45.8275V5.60319H65.0774V0.0185547H38.3594V37.6029H65.3342V31.8207H45.8275V21.2705Z" fill="#EEF5FF"/>
+<path d="M78.8341 0.0185547H71.3594V37.6029H78.8341V0.0185547Z" fill="#EEF5FF"/>
+<path d="M117.384 11.0693C117.435 9.51968 117.124 7.97948 116.476 6.57103C115.828 5.16258 114.86 3.92471 113.65 2.95576C111.101 0.927375 107.973 0.0185547 102.803 0.0185547H86.6484V37.6029H94.1363V5.44513H102.243C107.512 5.44513 109.599 8.13867 109.599 10.9705C109.599 15.6331 105.306 16.7725 101.624 16.7725H100.531L109.283 37.6029H117.186L109.876 21.0334C111.997 20.1904 117.357 18.1094 117.357 11.0693" fill="#EEF5FF"/>
+<path d="M18.2503 31.9865H7.6672V5.38048H17.4864C19.1855 5.38048 23.7362 5.99953 23.7362 10.3987C23.7362 13.6916 21.3127 15.8648 17.6906 15.8648H13.8248V21.2256H18.2503C22.3664 21.2256 24.836 23.524 24.836 26.5665C24.836 30.0569 22.0766 31.9865 18.2503 31.9865ZM23.6111 18.1567C31.0858 16.5761 31.1516 10.8795 31.1516 9.75335C31.1729 7.49007 30.3513 5.29984 28.8467 3.60894C25.6724 -2.82626e-06 20.8714 0 17.6511 0H0.554688V37.6041H19.6202C22.7813 37.6041 25.916 37.2748 29.0903 34.8579C31.2702 33.1522 32.4556 30.0569 32.4556 27.3502C32.4855 25.0792 31.6359 22.8846 30.0848 21.2256C27.9115 18.9601 25.2904 18.5254 23.6111 18.1764" fill="#EEF5FF"/>
+<path d="M218.244 0.0185547L204.414 37.6029H210.848L211.059 37.0563L221.978 6.45274L228.768 25.0045H219.686V25.1231C228.478 26.3019 232.429 35.1596 232.858 36.2199L233.193 37.1616L233.351 37.6029H241.34L227.411 0.0185547H218.244Z" fill="#EEF5FF"/>
+<path d="M133.619 0.0185547L119.789 37.6029H126.203L126.401 37.0563L137.366 6.45274L144.149 25.0045H135.061V25.1231C144.419 26.3743 148.331 36.4306 148.331 36.4306L148.687 37.3922L148.753 37.6029H156.748L142.78 0.0185547H133.619Z" fill="#EEF5FF"/>
+<path d="M275.551 11.0693C275.602 9.52045 275.291 7.9811 274.645 6.57293C273.998 5.16477 273.032 3.92641 271.824 2.95576C269.262 0.927375 266.154 0.0185547 260.977 0.0185547H244.836V37.6029H252.304V5.44513H260.418C265.686 5.44513 267.774 8.13867 267.774 10.9705C267.774 15.6331 263.48 16.7725 259.785 16.7725H258.712L267.491 37.6029H275.393L268.096 21.0334C270.224 20.1904 275.571 18.1094 275.571 11.0693" fill="#EEF5FF"/>
+<path d="M180.579 24.2538L171.926 0.0185547H160.203V37.6095H166.301V4.69437L177.84 37.6095H181.765L193.283 4.69437V37.6095H200.955V0.0185547H189.16L180.579 24.2538Z" fill="#EEF5FF"/>
+</g>
+<g clip-path="url(#clip1_2589_1708_bnimoveis)">
+<path d="M363.131 -0.142578C372.881 -0.142578 380.784 7.76108 380.784 17.5107V19.8125C380.784 29.5622 372.881 37.4658 363.131 37.4658H284.953V17.5107C284.953 7.7611 292.857 -0.142532 302.606 -0.142578H363.131ZM326.671 15.1494C325.712 15.1494 324.841 15.3727 324.058 15.8184C323.274 16.2641 322.653 16.8857 322.193 17.6826C321.734 18.4795 321.505 19.4046 321.505 20.458C321.505 21.4845 321.734 22.3964 322.193 23.1934C322.653 23.9902 323.267 24.6179 324.037 25.0771C324.82 25.5229 325.698 25.7461 326.671 25.7461C327.643 25.7461 328.521 25.5229 329.305 25.0771C330.088 24.618 330.71 23.9971 331.169 23.2139C331.628 22.4169 331.857 21.498 331.857 20.458C331.857 19.4046 331.628 18.4795 331.169 17.6826C330.71 16.8857 330.088 16.2641 329.305 15.8184C328.535 15.3727 327.657 15.1494 326.671 15.1494ZM348.29 15.1494C347.25 15.1495 346.332 15.3797 345.535 15.8389C344.752 16.2981 344.137 16.9327 343.691 17.7432C343.259 18.5536 343.043 19.4855 343.043 20.5391C343.043 21.5655 343.265 22.4706 343.711 23.2539C344.157 24.0372 344.771 24.6519 345.555 25.0977C346.352 25.5298 347.264 25.746 348.29 25.7461C349.1 25.7461 349.83 25.5979 350.479 25.3008C351.127 24.9901 351.674 24.5777 352.12 24.0645C352.566 23.5513 352.883 22.9705 353.072 22.3223H350.296C350.12 22.6733 349.864 22.9638 349.526 23.1934C349.189 23.4094 348.77 23.5175 348.271 23.5176C347.784 23.5176 347.345 23.4095 346.953 23.1934C346.575 22.9638 346.278 22.6464 346.062 22.2412C345.887 21.914 345.785 21.5423 345.751 21.127H353.315C353.342 20.9379 353.355 20.7617 353.355 20.5996C353.369 20.4377 353.376 20.2893 353.376 20.1543C353.376 19.1954 353.16 18.3444 352.728 17.6016C352.295 16.8452 351.701 16.2506 350.944 15.8184C350.188 15.3727 349.303 15.1494 348.29 15.1494ZM363.79 15.1494C362.926 15.1494 362.183 15.2916 361.562 15.5752C360.94 15.8588 360.467 16.2433 360.143 16.7295C359.818 17.2022 359.657 17.7429 359.657 18.3506C359.657 18.8368 359.764 19.2492 359.98 19.5869C360.21 19.9111 360.514 20.1813 360.893 20.3975C361.271 20.6135 361.689 20.7888 362.148 20.9238C362.608 21.0589 363.06 21.181 363.506 21.2891C363.938 21.3836 364.31 21.4777 364.621 21.5723C364.945 21.6667 365.188 21.7882 365.35 21.9365C365.512 22.0851 365.593 22.2953 365.593 22.5654C365.593 22.7544 365.539 22.9368 365.431 23.1123C365.323 23.2742 365.154 23.4096 364.925 23.5176C364.695 23.6121 364.398 23.6592 364.033 23.6592C363.669 23.6592 363.344 23.5981 363.061 23.4766C362.79 23.355 362.567 23.1928 362.392 22.9902C362.23 22.7742 362.121 22.5447 362.067 22.3018H359.333C359.401 22.9636 359.637 23.5582 360.042 24.085C360.447 24.598 360.987 25.0037 361.662 25.3008C362.351 25.5979 363.149 25.7461 364.054 25.7461C364.945 25.7461 365.708 25.6039 366.343 25.3203C366.991 25.0367 367.485 24.6453 367.822 24.1455C368.173 23.6323 368.342 23.0576 368.328 22.4229C368.342 21.6937 368.173 21.1398 367.822 20.7617C367.471 20.3835 366.998 20.0932 366.403 19.8906C365.823 19.6881 365.154 19.5058 364.397 19.3438C363.979 19.2492 363.607 19.1541 363.283 19.0596C362.973 18.9515 362.729 18.8233 362.554 18.6748C362.392 18.5264 362.311 18.3577 362.311 18.1689C362.311 17.9123 362.433 17.6961 362.676 17.5205C362.932 17.3449 363.297 17.2569 363.77 17.2568C364.215 17.2568 364.581 17.3449 364.864 17.5205C365.148 17.696 365.323 17.9457 365.391 18.2695H367.964C367.842 17.2972 367.417 16.5342 366.688 15.9805C365.972 15.4267 365.006 15.1494 363.79 15.1494ZM298.492 15.3926V25.5029H301.227V15.3926H298.492ZM315.885 15.1494C315.155 15.1494 314.487 15.3117 313.879 15.6357C313.271 15.9464 312.771 16.3718 312.379 16.9121C312.176 16.5205 311.913 16.196 311.589 15.9395C311.278 15.6695 310.914 15.4741 310.495 15.3525C310.09 15.2175 309.63 15.1494 309.117 15.1494C308.415 15.1494 307.793 15.2916 307.253 15.5752C306.726 15.8588 306.301 16.2503 305.977 16.75L305.754 15.3926H303.343V25.5029H306.078V20.2354C306.078 19.641 306.173 19.1406 306.362 18.7354C306.551 18.3304 306.808 18.0197 307.132 17.8037C307.469 17.5741 307.855 17.459 308.287 17.459C308.976 17.4591 309.483 17.6823 309.807 18.1279C310.131 18.5736 310.292 19.2085 310.292 20.0322V25.5029H313.008V20.2354C313.008 19.641 313.102 19.1406 313.291 18.7354C313.48 18.3303 313.744 18.0198 314.081 17.8037C314.419 17.5741 314.811 17.459 315.257 17.459C315.918 17.4591 316.411 17.6823 316.735 18.1279C317.059 18.5736 317.222 19.2084 317.222 20.0322V25.5029H319.937V19.7695C319.937 18.7835 319.781 17.9457 319.471 17.2568C319.16 16.568 318.701 16.0475 318.093 15.6963C317.499 15.3317 316.762 15.1495 315.885 15.1494ZM332.1 15.3926L335.808 25.5029H339.11L342.817 15.3926H339.981L337.469 22.9297L334.977 15.3926H332.1ZM355.028 15.3926V25.5029H357.764V15.3926H355.028ZM326.691 17.5205C327.124 17.5205 327.515 17.6286 327.866 17.8447C328.231 18.0608 328.521 18.3844 328.737 18.8164C328.953 19.2486 329.062 19.7962 329.062 20.458C329.062 21.0928 328.953 21.6334 328.737 22.0791C328.521 22.5112 328.231 22.8357 327.866 23.0518C327.515 23.2677 327.116 23.376 326.671 23.376C326.239 23.376 325.84 23.2678 325.476 23.0518C325.124 22.8357 324.841 22.5112 324.625 22.0791C324.409 21.6334 324.301 21.0928 324.301 20.458C324.301 19.8097 324.409 19.2691 324.625 18.8369C324.841 18.3913 325.131 18.0608 325.496 17.8447C325.861 17.6286 326.259 17.5205 326.691 17.5205ZM348.311 17.3584C348.945 17.3584 349.472 17.5476 349.891 17.9258C350.323 18.304 350.56 18.8105 350.601 19.4453H345.806C345.862 19.1393 345.954 18.869 346.082 18.6348C346.312 18.2162 346.622 17.8987 347.014 17.6826C347.405 17.4665 347.838 17.3584 348.311 17.3584ZM324.341 12.6377L324.442 14.5215L329.021 12.3135L328.899 10.165L324.341 12.6377ZM299.869 10.875C299.37 10.8751 298.965 11.0234 298.654 11.3203C298.344 11.6039 298.188 11.9685 298.188 12.4141C298.188 12.8598 298.344 13.2312 298.654 13.5283C298.965 13.8119 299.37 13.954 299.869 13.9541C300.369 13.9541 300.774 13.812 301.085 13.5283C301.409 13.2312 301.571 12.8598 301.571 12.4141C301.571 11.9685 301.409 11.6039 301.085 11.3203C300.774 11.0232 300.369 10.875 299.869 10.875ZM356.406 10.875C355.906 10.875 355.501 11.0232 355.19 11.3203C354.88 11.6039 354.725 11.9685 354.725 12.4141C354.725 12.8597 354.88 13.2312 355.19 13.5283C355.501 13.812 355.906 13.9541 356.406 13.9541C356.906 13.9541 357.311 13.812 357.622 13.5283C357.946 13.2312 358.108 12.8596 358.108 12.4141C358.108 11.9685 357.946 11.6039 357.622 11.3203C357.311 11.0232 356.906 10.875 356.406 10.875Z" fill="#EEF5FF"/>
+</g>
+<defs>
+<clipPath id="clip0_2589_1708_bnimoveis">
+<rect width="275.568" height="37.3986" fill="white" transform="translate(0.445312 0.109375)"/>
+</clipPath>
+<clipPath id="clip1_2589_1708_bnimoveis">
+<rect width="95.9424" height="37.6094" fill="white" transform="translate(285)"/>
+</clipPath>
+</defs></svg></span>
+        <p>Desde 1981, uma imobiliária full service com atuação no DF.</p>
+      </div>
+      <div class="bignum-grid">
+        <div class="bn"><div class="bn-num" data-to="300" data-prefix="+">+300</div><div class="bn-lbl">colaboradores diretos</div></div>
+        <div class="bn"><div class="bn-num" data-to="250" data-prefix="+" data-suffix="mil">+250<span class="u">mil</span></div><div class="bn-lbl">famílias atendidas</div></div>
+        <div class="bn"><div class="bn-num" data-to="50" data-prefix="+">+50</div><div class="bn-lbl">incorporadoras parceiras</div></div>
+        <div class="bn"><div class="bn-num" data-to="45">45</div><div class="bn-lbl">anos de mercado imobiliário</div></div>
+      </div>
+    </div>
+
+    <!-- bloco 2 -->
+    <div class="bignum-block reveal">
+      <div class="bignum-lede">
+        <span class="bignum-brand bignum-brand-brm"><svg class="logo bignum-logo bignum-logo-brm" viewBox="0 0 287 56" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BRM Asset"><path d="M43.951 31.4771C40.724 28.1193 36.8227 27.4753 34.3333 26.9578H34.2872C45.4032 24.6234 45.4954 16.2058 45.4954 14.4866C45.5299 11.123 44.3083 7.87436 42.0724 5.37321C37.3586 0.00292749 30.2188 0.00292969 25.4244 0.00292969H0V55.7987H28.3979C33.1001 55.7987 37.7563 55.3042 42.4758 51.7106C45.7143 49.1807 47.4834 44.5866 47.4834 40.5675C47.5295 37.1924 46.2618 33.938 43.9568 31.4771H43.951ZM26.3118 47.4787H26.3176L10.5801 47.4845V7.99511H25.1881C27.7064 7.99511 34.4716 8.90932 34.4716 15.4411C34.4716 20.3744 30.8642 23.554 25.4878 23.554H19.731V31.5116H26.3118C32.4317 31.5116 36.1024 34.9213 36.1024 39.4348C36.1024 44.6154 31.9995 47.4787 26.3118 47.4787Z" fill="white"/>
+<path d="M67.6749 8.07229H79.7416C87.573 8.07229 90.679 12.0741 90.679 16.2715C90.679 23.1884 84.2883 24.8789 78.7966 24.8789H77.2061L90.1949 55.7953H101.939L91.1688 31.2093C94.3324 29.9444 102.285 26.8568 102.285 16.4095H102.239C102.394 11.7464 100.337 7.29032 96.7008 4.36369C92.8976 1.35081 88.2702 0.00537109 80.5714 0.00537109H56.5762V55.7953H67.6749V8.07229Z" fill="white"/>
+<path d="M120.447 6.93997L137.602 55.8015H143.44L160.56 6.93997V55.8015H171.97V0H154.435L141.676 35.9763L128.809 0H111.377V55.8015H120.441V6.93997H120.447Z" fill="white"/>
+<path d="M43.9531 31.4785L43.9598 31.4852L43.9531 31.4785Z" fill="white"/>
+<g clip-path="url(#clip0_2583_1594_bnbrm)">
+<path d="M259.784 0C274.403 0.000225117 286.25 11.8477 286.25 26.4668V29.3301C286.25 43.9491 274.403 55.7966 259.784 55.7969H181.943V26.4668C181.943 11.8477 193.79 0.000223136 208.409 0H259.784ZM206.888 21.8164C205.656 21.8164 204.549 22.0278 203.567 22.4512C202.605 22.8746 201.825 23.4714 201.229 24.2412C200.651 25.0112 200.304 25.9257 200.188 26.9844H203.971C204.105 26.2722 204.433 25.752 204.953 25.4248C205.492 25.0785 206.137 24.9053 206.888 24.9053C207.523 24.9053 208.042 25.0211 208.446 25.252C208.87 25.4829 209.178 25.8292 209.37 26.291C209.582 26.753 209.688 27.3405 209.688 28.0527H206.079C204.674 28.0527 203.509 28.2449 202.585 28.6299C201.661 28.9956 200.969 29.5158 200.507 30.1895C200.064 30.8631 199.843 31.6429 199.843 32.5283C199.843 33.3173 200.016 34.039 200.362 34.6934C200.709 35.3476 201.247 35.867 201.979 36.252C202.729 36.6369 203.673 36.8301 204.809 36.8301C205.328 36.8301 205.828 36.7717 206.31 36.6562C206.791 36.56 207.244 36.4061 207.667 36.1943C208.09 35.9827 208.475 35.7137 208.821 35.3867C209.187 35.0595 209.524 34.6832 209.832 34.2598H209.948L210.352 36.4834H213.586V27.6768C213.586 26.4258 213.316 25.367 212.777 24.501C212.238 23.6157 211.469 22.9515 210.468 22.5088C209.467 22.0469 208.273 21.8165 206.888 21.8164ZM221.353 21.8164C220.14 21.8165 219.091 22.0187 218.206 22.4229C217.34 22.827 216.676 23.3655 216.214 24.0391C215.752 24.7127 215.521 25.4635 215.521 26.291C215.521 27.003 215.675 27.5999 215.982 28.0811C216.31 28.543 216.743 28.9284 217.282 29.2363C217.821 29.525 218.408 29.7656 219.043 29.958C219.697 30.1505 220.342 30.3336 220.978 30.5068C221.593 30.6801 222.123 30.8441 222.565 30.998C223.027 31.152 223.374 31.3342 223.605 31.5459C223.856 31.7384 223.98 32.0181 223.98 32.3838C223.98 32.653 223.894 32.903 223.721 33.1338C223.567 33.3647 223.326 33.5579 222.999 33.7119C222.672 33.8467 222.238 33.9141 221.699 33.9141C221.18 33.914 220.718 33.8275 220.313 33.6543C219.929 33.4618 219.621 33.2113 219.39 32.9033C219.159 32.5955 219.005 32.2682 218.928 31.9219H215.03C215.127 32.8647 215.463 33.7114 216.04 34.4619C216.637 35.1933 217.417 35.7709 218.379 36.1943C219.36 36.6178 220.487 36.83 221.757 36.8301C223.027 36.8301 224.115 36.6278 225.02 36.2236C225.924 35.8002 226.627 35.2327 227.128 34.5205C227.628 33.8083 227.869 32.9894 227.85 32.0654C227.85 31.1033 227.599 30.3624 227.099 29.8428C226.598 29.3038 225.924 28.8802 225.077 28.5723C224.23 28.2644 223.297 27.9755 222.277 27.7061C221.642 27.5328 221.093 27.3789 220.631 27.2441C220.188 27.0902 219.851 26.9261 219.62 26.7529C219.389 26.5606 219.274 26.3298 219.274 26.0605C219.274 25.6948 219.448 25.3869 219.794 25.1367C220.16 24.8673 220.679 24.7325 221.353 24.7324C221.988 24.7324 222.498 24.8673 222.883 25.1367C223.287 25.4062 223.538 25.7815 223.634 26.2627H227.301C227.128 24.8768 226.521 23.7892 225.481 23C224.461 22.2109 223.085 21.8164 221.353 21.8164ZM235.169 21.8164C233.956 21.8164 232.907 22.0186 232.021 22.4229C231.156 22.827 230.491 23.3655 230.029 24.0391C229.567 24.7127 229.337 25.4635 229.337 26.291C229.337 27.0031 229.491 27.5999 229.799 28.0811C230.126 28.543 230.559 28.9284 231.098 29.2363C231.637 29.5251 232.224 29.7655 232.859 29.958C233.514 30.1505 234.159 30.3336 234.794 30.5068C235.41 30.68 235.939 30.8441 236.382 30.998C236.843 31.152 237.19 31.3343 237.421 31.5459C237.671 31.7384 237.797 32.0181 237.797 32.3838C237.797 32.6531 237.709 32.9029 237.536 33.1338C237.382 33.3648 237.142 33.5579 236.814 33.7119C236.487 33.8465 236.054 33.914 235.516 33.9141C234.996 33.9141 234.534 33.8274 234.13 33.6543C233.745 33.4619 233.437 33.2112 233.206 32.9033C232.975 32.5955 232.821 32.2682 232.744 31.9219H228.846C228.942 32.8648 229.279 33.7114 229.856 34.4619C230.453 35.1934 231.233 35.7709 232.195 36.1943C233.177 36.6178 234.303 36.8301 235.573 36.8301C236.844 36.8301 237.931 36.6278 238.836 36.2236C239.74 35.8002 240.443 35.2325 240.943 34.5205C241.444 33.8083 241.684 32.9894 241.665 32.0654C241.665 31.1034 241.415 30.3624 240.915 29.8428C240.415 29.3038 239.74 28.8802 238.894 28.5723C238.047 28.2643 237.113 27.9755 236.093 27.7061C235.458 27.5328 234.909 27.3789 234.447 27.2441C234.005 27.0902 233.668 26.9262 233.437 26.7529C233.206 26.5605 233.09 26.3298 233.09 26.0605C233.09 25.6948 233.264 25.3869 233.61 25.1367C233.976 24.8673 234.495 24.7324 235.169 24.7324C235.804 24.7324 236.314 24.8672 236.699 25.1367C237.103 25.4062 237.354 25.7815 237.45 26.2627H241.117C240.944 24.8769 240.337 23.7892 239.298 23C238.278 22.2108 236.901 21.8164 235.169 21.8164ZM250.429 21.8164C248.947 21.8164 247.638 22.1434 246.502 22.7979C245.386 23.4523 244.51 24.3569 243.875 25.5117C243.259 26.6474 242.95 27.9664 242.95 29.4678C242.95 30.9112 243.268 32.1913 243.903 33.3076C244.539 34.424 245.415 35.2903 246.531 35.9062C247.667 36.522 248.966 36.8301 250.429 36.8301C251.584 36.8301 252.623 36.6178 253.547 36.1943C254.471 35.7516 255.251 35.165 255.886 34.4336C256.521 33.6829 256.973 32.8549 257.242 31.9502H253.287C253.037 32.4507 252.671 32.8652 252.189 33.1924C251.708 33.5001 251.111 33.6543 250.399 33.6543C249.707 33.6542 249.081 33.5001 248.523 33.1924C247.984 32.8844 247.561 32.4508 247.253 31.8926C247.003 31.4234 246.856 30.8843 246.809 30.2754H257.618C257.637 30.0253 257.646 29.7846 257.646 29.5537C257.666 29.3036 257.676 29.0821 257.676 28.8896C257.676 27.5425 257.368 26.3398 256.752 25.2812C256.136 24.2034 255.289 23.3562 254.211 22.7402C253.133 22.1243 251.872 21.8164 250.429 21.8164ZM261.078 18.2646L260.646 22.1621H258.191V25.2812H260.646V31.373C260.646 32.6626 260.857 33.6829 261.28 34.4336C261.704 35.165 262.291 35.6943 263.042 36.0215C263.812 36.3294 264.707 36.4834 265.727 36.4834H268.268V33.25H266.449C265.756 33.25 265.265 33.1242 264.977 32.874C264.688 32.6045 264.543 32.1236 264.543 31.4307V25.2812H268.354V22.1621H264.543V18.2646H261.078ZM209.515 30.4492C209.457 30.8918 209.341 31.3247 209.168 31.748C209.014 32.1523 208.793 32.5084 208.504 32.8164C208.215 33.1244 207.869 33.3749 207.465 33.5674C207.08 33.7406 206.618 33.8271 206.079 33.8271C205.675 33.8271 205.309 33.7698 204.981 33.6543C204.654 33.5196 204.405 33.3264 204.231 33.0762C204.058 32.826 203.971 32.528 203.971 32.1816C203.971 31.8352 204.058 31.5364 204.231 31.2861C204.405 31.0169 204.674 30.8144 205.039 30.6797C205.424 30.5257 205.915 30.4492 206.512 30.4492H209.515ZM250.458 24.9053C251.362 24.9054 252.113 25.175 252.71 25.7139C253.326 26.2527 253.662 26.9745 253.72 27.8789H246.888C246.968 27.4432 247.098 27.0581 247.281 26.7246C247.608 26.1087 248.051 25.6559 248.609 25.3672C249.168 25.0592 249.784 24.9053 250.458 24.9053Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip0_2583_1594_bnbrm">
+<rect width="104.307" height="55.8013" fill="white" transform="translate(181.941)"/>
+</clipPath>
+</defs></svg></span>
+        <p>Presença em 2 países (Brasil e EUA), 3 Estados e 9 Cidades.</p>
+      </div>
+      <div class="bignum-grid">
+        <div class="bn"><div class="bn-num" data-to="2.2" data-prefix="+" data-suffix="Bi" data-dec="1">+2.2<span class="u">Bi</span></div><div class="bn-lbl">em ativos imobiliários geridos</div></div>
+        <div class="bn"><div class="bn-num" data-to="5" data-prefix="+" data-suffix="K">+5<span class="u">K</span></div><div class="bn-lbl">investidores imobiliários</div></div>
+        <div class="bn"><div class="bn-num" data-to="300" data-prefix="+">+300</div><div class="bn-lbl">participações em empreendimento</div></div>
+        <div class="bn"><div class="bn-num" data-to="510" data-prefix="R$">+1<span class="u">Bi</span></div><div class="bn-lbl">Aum</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ O GRUPO ============ -->
+<section class="band" id="grupo">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <span class="eyebrow">O Grupo</span>
+        <p class="lead" style="margin-top:24px">Nascemos em Brasília e crescemos com ela. Em <em>quatro décadas e meia</em>, ajudamos milhares de famílias a encontrar não apenas um endereço mas um lugar para pertencer.</p>
+        <p>O Grupo Beiramar começou no imobiliário e nunca perdeu essa raiz. Ao longo dos anos, evoluímos para um ecossistema completo: da corretagem à gestão de ativos, da incorporação à inteligência de investimentos.</p>
+        <p>O que nos manteve relevantes por 45 anos não foi o tamanho. Foi a consistência. A mesma seriedade que fechou o primeiro contrato continua guiando cada decisão do grupo hoje.</p>
+        <a href="#frentes" class="btn btn-ghost" style="margin-top:14px">Ver as frentes do grupo <span class="arrow">→</span></a>
+      </div>
+      <div class="about-visual reveal">
+        <svg class="arc-deco" viewBox="0 0 400 400" fill="none"><circle cx="200" cy="200" r="150" stroke="#6E8FE0" stroke-width="1"/><circle cx="200" cy="200" r="199" stroke="#4E74D8" stroke-width="1"/></svg>
+        <div class="yr">
+          <div class="big">1981</div>
+          <div class="sm">O ano em que começamos a construir a confiança que carregamos até hoje.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VÍDEO INSTITUCIONAL ============ -->
+<section class="video-band" id="video">
+  <div class="wrap">
+    <div class="video-head reveal">
+      <span class="eyebrow">Nossa história em vídeo</span>
+      <h2>Conheça o <em>Grupo Beiramar</em> por dentro.</h2>
+    </div>
+    <div class="video-frame reveal">
+
+      <!-- ============================================================
+           QUANDO O VÍDEO ESTIVER NO YOUTUBE:
+           1) Copie o ID do vídeo (a parte depois de "watch?v=" na URL).
+              Ex.: youtube.com/watch?v=ABC123xyz  →  o ID é ABC123xyz
+           2) Apague o bloco <div class="video-ph">...</div> abaixo.
+           3) Descomente a linha do iframe e troque SEU_VIDEO_ID pelo ID.
+           ============================================================ -->
+
+      <!-- <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" title="Vídeo institucional Grupo Beiramar" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+
+      <!-- placeholder — remover quando o vídeo for publicado -->
+      <div class="video-ph">
+        <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+        <div style="text-align:center">
+          <div class="vlabel">Vídeo institucional</div>
+          <div class="vsub">Em breve no YouTube</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FUNDADOR ============ -->
+<section class="band founder" id="fundador">
+  <div class="wrap">
+    <div class="founder-grid">
+      <div class="founder-photo reveal">
+        <div class="founder-img">
+          <span class="founder-ph">[ foto do fundador ]</span>
+        </div>
+        <div class="founder-caption">
+          <div class="founder-name">[ Nome do Fundador ]</div>
+          <div class="founder-role">Fundador · Grupo Beiramar</div>
+        </div>
+      </div>
+      <div class="founder-copy reveal">
+        <span class="eyebrow">Onde tudo começou</span>
+        <h2>O nome por trás de <em>45 anos de história</em>.</h2>
+        <p class="lead">Alberto Fernandes</p>
+        <p>Em 1959, <b>Alberto Fernandes</b> chegou a Brasília vindo do interior do Maranhão. Pioneiro de uma cidade que ainda estava sendo construída, trouxe consigo o espírito empreendedor que marcaria toda a sua trajetória.</p>
+        <p>Após empreender em diferentes segmentos, encontrou no mercado imobiliário o caminho para consolidar seu propósito. Em 1981, fundou a Beiramar, iniciando uma história que atravessaria gerações e acompanharia o crescimento de Brasília.</p>
+        <p>Seu legado está na empresa que construiu, nas pessoas que formou e nos valores que permanecem presentes até hoje: empreendedorismo, seriedade, coragem e compromisso.</p>
+        <p>Hoje, essa história segue pelas mãos de seus filhos, <b>Pedro Fernandes</b> e <b>Paulo Fernandes</b>, que dão continuidade ao propósito de Alberto e conduzem a Beiramar para os próximos capítulos de sua trajetória.</p>
+        <p>Uma história que começou com um homem que acreditou em Brasília e que continua sendo construída por novas gerações.</p>
+        <blockquote class="founder-quote">"[ Frase marcante do fundador, se houver — algo que resuma a filosofia dele. ]"</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FRENTES ============ -->
+<section class="band band-mist" id="frentes">
+  <div class="wrap">
+    <div class="frentes-intro reveal">
+      <div style="max-width:640px">
+        <span class="eyebrow">Frentes do grupo</span>
+        <h2 style="font-size:clamp(2.1rem,4vw,3.2rem);margin-top:22px;color:var(--navy)">Um grupo. <em style="font-weight:500;color:var(--royal)">Quatro especialidades.</em></h2>
+      </div>
+      <p style="max-width:380px;color:var(--text-soft);font-size:1.05rem">Cada frente resolve uma necessidade diferente do mercado — sempre com o mesmo padrão de solidez do Grupo Beiramar.</p>
+    </div>
+
+    <div class="frentes-grid">
+      <div class="frente reveal">
+        <span class="n">01</span>
+        <span class="badge"><svg class="frente-logo frente-logo-imoveis" viewBox="0 0 521 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="frenteimoveis"><g clip-path="url(#clip0_2428_1867_frenteimoveis)">
+<path d="M79.1894 43.2392H100.717V35.6322H79.1894V21.4093H106.011V13.6279H68.7837V65.996H106.369V57.9394H79.1894V43.2392Z" fill="#00458C"/>
+<path d="M125.168 13.6279H114.753V65.996H125.168V13.6279Z" fill="#00458C"/>
+<path d="M178.886 29.0254C178.957 26.8663 178.524 24.7203 177.621 22.7578C176.718 20.7953 175.37 19.0706 173.683 17.7205C170.132 14.8942 165.773 13.6279 158.57 13.6279H136.061V65.996H146.494V21.189H157.79C165.131 21.189 168.04 24.9421 168.04 28.8878C168.04 35.3845 162.057 36.9719 156.928 36.9719H155.404L167.599 65.996H178.611L168.425 42.9089C171.38 41.7344 178.849 38.8347 178.849 29.0254" fill="#00458C"/>
+<path d="M40.7646 58.1719H26.0186V21.1004H39.7002C42.0676 21.1004 48.4083 21.9629 48.4083 28.0926C48.4083 32.6806 45.0315 35.7088 39.9846 35.7088H34.5983V43.1781H40.7646C46.4997 43.1781 49.9407 46.3806 49.9407 50.6199C49.9407 55.4833 46.0959 58.1719 40.7646 58.1719ZM48.234 38.902C58.6489 36.6998 58.7406 28.7624 58.7406 27.1933C58.7702 24.0398 57.6254 20.988 55.529 18.632C51.1061 13.6035 44.4167 13.6035 39.9296 13.6035H16.1084V65.9991H42.6732C47.0778 65.9991 51.4456 65.5403 55.8685 62.1727C58.9058 59.796 60.5575 55.4833 60.5575 51.7119C60.5991 48.5476 59.4154 45.4897 57.2541 43.1781C54.226 40.0215 50.5739 39.4159 48.234 38.9296" fill="#00458C"/>
+<path d="M319.423 13.6279L300.153 65.996H309.118L309.412 65.2344L324.626 22.593L334.086 48.4421H321.432V48.6073C333.682 50.2498 339.188 62.5917 339.784 64.069L340.252 65.3812L340.473 65.996H351.603L332.196 13.6279H319.423Z" fill="#00458C"/>
+<path d="M201.513 13.6279L182.244 65.996H191.181L191.456 65.2344L206.735 22.593L216.186 48.4421H203.523V48.6073C216.562 50.3507 222.013 64.3626 222.013 64.3626L222.508 65.7024L222.6 65.996H233.74L214.277 13.6279H201.513Z" fill="#00458C"/>
+<path d="M399.271 29.0254C399.341 26.8674 398.909 24.7225 398.007 22.7605C397.106 20.7984 395.76 19.0729 394.077 17.7205C390.508 14.8942 386.176 13.6279 378.964 13.6279H356.473V65.996H366.879V21.189H378.184C385.525 21.189 388.434 24.9421 388.434 28.8878C388.434 35.3845 382.451 36.9719 377.303 36.9719H375.807L388.039 65.996H399.051L388.883 42.9089C391.847 41.7344 399.298 38.8347 399.298 29.0254" fill="#00458C"/>
+<path d="M266.946 47.396L254.889 13.6279H238.555V66.0052H247.052V20.143L263.129 66.0052H268.598L284.647 20.143V66.0052H295.337V13.6279H278.903L266.946 47.396Z" fill="#00458C"/>
+</g>
+<g clip-path="url(#clip1_2428_1867_frenteimoveis)">
+<path d="M487.778 28.2764C497.521 28.2764 505.42 36.1753 505.42 45.9189V48.2188C505.42 57.9624 497.521 65.8613 487.778 65.8613H409.649V45.9189C409.649 36.1753 417.548 28.2764 427.291 28.2764H487.778ZM451.338 43.5713C450.38 43.5713 449.51 43.794 448.727 44.2393C447.944 44.6847 447.322 45.3061 446.864 46.1025C446.405 46.8989 446.175 47.8233 446.175 48.876C446.175 49.9018 446.405 50.813 446.864 51.6094C447.322 52.4058 447.937 53.0342 448.706 53.4932C449.489 53.9385 450.366 54.1611 451.338 54.1611C452.31 54.1611 453.188 53.9386 453.971 53.4932C454.754 53.0342 455.374 52.4128 455.833 51.6299C456.292 50.8334 456.522 49.9154 456.522 48.876C456.522 47.8232 456.292 46.8989 455.833 46.1025C455.374 45.3062 454.754 44.6847 453.971 44.2393C453.202 43.7938 452.324 43.5713 451.338 43.5713ZM472.945 43.5713C471.905 43.5713 470.987 43.8008 470.191 44.2598C469.408 44.7187 468.793 45.3532 468.348 46.1631C467.916 46.9729 467.7 47.9042 467.7 48.957C467.7 49.9828 467.923 50.8871 468.368 51.6699C468.814 52.4529 469.428 53.0672 470.211 53.5127C471.008 53.9446 471.919 54.1611 472.945 54.1611C473.754 54.1611 474.483 54.0127 475.131 53.7158C475.779 53.4053 476.326 52.9934 476.772 52.4805C477.217 51.9676 477.534 51.387 477.723 50.7393H474.948C474.773 51.0899 474.517 51.38 474.18 51.6094C473.842 51.8254 473.424 51.9336 472.924 51.9336C472.438 51.9336 471.999 51.8254 471.608 51.6094C471.23 51.3799 470.933 51.063 470.717 50.6582C470.543 50.331 470.44 49.9593 470.406 49.5439H477.966C477.993 49.3551 478.006 49.1794 478.006 49.0176C478.02 48.8557 478.027 48.7072 478.027 48.5723C478.027 47.6141 477.811 46.7638 477.379 46.0215C476.947 45.2656 476.353 44.6712 475.597 44.2393C474.841 43.7938 473.957 43.5713 472.945 43.5713ZM488.434 43.5713C487.57 43.5713 486.828 43.7128 486.207 43.9961C485.586 44.2796 485.113 44.6644 484.789 45.1504C484.465 45.6228 484.304 46.1631 484.304 46.7705C484.304 47.2564 484.411 47.6684 484.627 48.0059C484.857 48.3297 485.161 48.5995 485.538 48.8154C485.916 49.0314 486.335 49.2068 486.794 49.3418C487.253 49.4768 487.705 49.5981 488.151 49.7061C488.583 49.8005 488.954 49.8957 489.265 49.9902C489.589 50.0847 489.832 50.2061 489.993 50.3545C490.155 50.503 490.237 50.7125 490.237 50.9824C490.236 51.1711 490.182 51.3531 490.074 51.5283C489.967 51.6902 489.798 51.8256 489.569 51.9336C489.339 52.0281 489.041 52.0752 488.677 52.0752C488.313 52.0752 487.989 52.015 487.705 51.8936C487.435 51.7721 487.213 51.6097 487.037 51.4072C486.875 51.1912 486.767 50.9617 486.713 50.7188H483.98C484.047 51.3802 484.284 51.9745 484.689 52.501C485.094 53.0137 485.633 53.4189 486.308 53.7158C486.996 54.0128 487.793 54.1611 488.698 54.1611C489.588 54.1611 490.351 54.0188 490.986 53.7354C491.633 53.4519 492.127 53.0609 492.464 52.5615C492.815 52.0486 492.983 51.4743 492.97 50.8398C492.983 50.1112 492.815 49.5576 492.464 49.1797C492.113 48.8017 491.64 48.5121 491.046 48.3096C490.466 48.1071 489.797 47.9247 489.041 47.7627C488.623 47.6682 488.252 47.5739 487.928 47.4795C487.618 47.3716 487.375 47.2431 487.199 47.0947C487.037 46.9462 486.956 46.7769 486.956 46.5879C486.956 46.3316 487.078 46.1158 487.321 45.9404C487.577 45.7649 487.942 45.6768 488.414 45.6768C488.873 45.6768 489.237 45.765 489.507 45.9404C489.791 46.1159 489.966 46.3655 490.033 46.6895H492.606C492.484 45.7175 492.058 44.9548 491.329 44.4014C490.614 43.848 489.649 43.5713 488.434 43.5713ZM423.177 43.8145V53.918H425.91V43.8145H423.177ZM440.559 43.5713C439.83 43.5713 439.161 43.7327 438.554 44.0566C437.947 44.3671 437.447 44.7931 437.056 45.333C436.853 44.9415 436.59 44.6168 436.266 44.3604C435.955 44.0905 435.59 43.8949 435.172 43.7734C434.767 43.6385 434.308 43.5713 433.795 43.5713C433.093 43.5714 432.473 43.7127 431.933 43.9961C431.406 44.2796 430.981 44.6714 430.657 45.1709L430.435 43.8145H428.025V53.918H430.758V48.6533C430.758 48.0594 430.853 47.5602 431.042 47.1553C431.231 46.7503 431.488 46.4396 431.812 46.2236C432.149 45.9944 432.533 45.879 432.965 45.8789C433.654 45.8789 434.16 46.1024 434.484 46.5479C434.808 46.9933 434.97 47.6277 434.97 48.4512V53.918H437.683V48.6533C437.683 48.0595 437.778 47.5602 437.967 47.1553C438.156 46.7504 438.419 46.4396 438.756 46.2236C439.094 45.9942 439.485 45.8789 439.931 45.8789C440.592 45.8789 441.085 46.1024 441.409 46.5479C441.733 46.9933 441.895 47.628 441.895 48.4512V53.918H444.609V48.1875C444.609 47.2022 444.453 46.3652 444.143 45.6768C443.832 44.9884 443.373 44.4691 442.766 44.1182C442.172 43.7537 441.436 43.5713 440.559 43.5713ZM456.764 43.8145L460.469 53.918H463.77L467.475 43.8145H464.64L462.129 51.3467L459.639 43.8145H456.764ZM479.678 43.8145V53.918H482.411V43.8145H479.678ZM451.359 45.9404C451.791 45.9404 452.182 46.0477 452.533 46.2637C452.898 46.4797 453.188 46.8044 453.404 47.2363C453.619 47.6682 453.728 48.2147 453.728 48.876C453.728 49.5104 453.62 50.0506 453.404 50.4961C453.188 50.9279 452.898 51.2518 452.533 51.4678C452.182 51.6838 451.784 51.792 451.338 51.792C450.906 51.7919 450.508 51.6837 450.144 51.4678C449.793 51.2518 449.509 50.928 449.293 50.4961C449.077 50.0506 448.969 49.5104 448.969 48.876C448.969 48.2281 449.077 47.6878 449.293 47.2559C449.509 46.8105 449.8 46.4796 450.164 46.2637C450.529 46.0479 450.927 45.9404 451.359 45.9404ZM472.964 45.7783C473.599 45.7783 474.126 45.9668 474.544 46.3447C474.976 46.7226 475.212 47.2291 475.252 47.8633H470.461C470.518 47.5577 470.609 47.2876 470.738 47.0537C470.967 46.6355 471.277 46.3185 471.668 46.1025C472.06 45.8866 472.492 45.7784 472.964 45.7783ZM449.01 41.0605L449.112 42.9434L453.687 40.7363L453.566 38.5898L449.01 41.0605ZM424.554 39.2988C424.055 39.2988 423.65 39.4473 423.339 39.7441C423.029 40.0276 422.873 40.3924 422.873 40.8379C422.873 41.2832 423.029 41.6543 423.339 41.9512C423.65 42.2345 424.055 42.376 424.554 42.376C425.053 42.3759 425.458 42.2346 425.769 41.9512C426.093 41.6543 426.254 41.2831 426.254 40.8379C426.254 40.3925 426.093 40.0276 425.769 39.7441C425.458 39.4472 425.053 39.2989 424.554 39.2988ZM481.055 39.2988C480.556 39.2989 480.151 39.4472 479.84 39.7441C479.53 40.0276 479.374 40.3924 479.374 40.8379C479.374 41.2832 479.53 41.6543 479.84 41.9512C480.151 42.2346 480.556 42.376 481.055 42.376C481.554 42.376 481.959 42.2346 482.27 41.9512C482.594 41.6543 482.756 41.2832 482.756 40.8379C482.756 40.3924 482.594 40.0276 482.27 39.7441C481.959 39.4472 481.554 39.2988 481.055 39.2988Z" fill="#667482"/>
+</g>
+<defs>
+<clipPath id="clip0_2428_1867_frenteimoveis">
+<rect width="383.963" height="52.1092" fill="white" transform="translate(15.9482 13.7559)"/>
+</clipPath>
+<clipPath id="clip1_2428_1867_frenteimoveis">
+<rect width="95.8828" height="37.586" fill="white" transform="translate(409.706 28.4199)"/>
+</clipPath>
+</defs></svg></span>
+        <h3>Onde tudo começou</h3>
+        <p>A frente imobiliária do grupo. Compra, venda e locação de imóveis com o atendimento consultivo que transformou a Beiramar em referência em Brasília. Aqui, cada cliente encontra mais do que um imóvel — encontra o lugar certo.</p>
+        <a href="#contato" class="lk">Falar com a Beiramar Imóveis <span class="arrow">→</span></a>
+      </div>
+
+      <div class="frente reveal">
+        <span class="n">02</span>
+        <span class="badge"><svg class="frente-logo" viewBox="0 0 461 102" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="frenteasset"><path d="M79.7646 57.1269C73.908 51.0329 66.8278 49.8642 62.3098 48.925H62.2262C82.4 44.6884 82.5673 29.4116 82.5673 26.2916C82.6301 20.1871 80.413 14.2913 76.3552 9.75212C67.8004 0.00585539 54.8427 0.00585938 46.1415 0.00585938H0V101.267H51.5379C60.0718 101.267 68.522 100.369 77.0873 93.8476C82.9647 89.2562 86.1754 80.9186 86.1754 73.6246C86.2591 67.4993 83.9583 61.5931 79.775 57.1269H79.7646ZM47.7521 86.1674H47.7625L19.2012 86.1779V14.5105H45.7127C50.2829 14.5105 62.5608 16.1696 62.5608 28.0238C62.5608 36.977 56.014 42.7475 46.2565 42.7475H35.8088V57.1895H47.7521C58.8586 57.1895 65.5205 63.3775 65.5205 71.5689C65.5205 80.9708 58.0743 86.1674 47.7521 86.1674Z" fill="#00458C"/>
+<path d="M122.821 14.65H144.72C158.933 14.65 164.57 21.9128 164.57 29.5303C164.57 42.0836 152.972 45.1515 143.005 45.1515H140.119L163.691 101.26H185.005L165.459 56.6404C171.2 54.3447 185.633 48.7411 185.633 29.7807H185.549C185.831 21.318 182.098 13.2309 175.499 7.91946C168.596 2.45154 160.198 0.00976562 146.226 0.00976562H102.678V101.26H122.821V14.65Z" fill="#00458C"/>
+<path d="M218.595 12.595L249.729 101.271H260.323L291.394 12.595V101.271H312.101V0H280.277L257.123 65.2916L233.77 0H202.134V101.271H218.584V12.595H218.595Z" fill="#00458C"/>
+<path d="M79.7671 57.1309L79.7776 57.1413L79.7671 57.1309Z" fill="white"/>
+<g clip-path="url(#clip0_2435_5164_frenteasset)">
+<path d="M427.157 30.7578C445.631 30.7578 460.602 45.7291 460.602 64.2031V67.8213C460.602 86.2953 445.631 101.267 427.157 101.267H328.791V64.2031C328.791 45.7291 343.762 30.7579 362.236 30.7578H427.157ZM360.31 58.3252C358.754 58.3252 357.355 58.5929 356.115 59.1279C354.899 59.663 353.913 60.4168 353.159 61.3896C352.429 62.3626 351.991 63.5186 351.845 64.8564H356.625C356.796 63.9565 357.209 63.2992 357.866 62.8857C358.547 62.448 359.362 62.2295 360.31 62.2295C361.113 62.2295 361.77 62.3751 362.281 62.667C362.816 62.9588 363.205 63.3969 363.448 63.9805C363.715 64.5642 363.849 65.3062 363.849 66.2061H359.289C357.513 66.2061 356.041 66.4491 354.874 66.9355C353.706 67.3977 352.83 68.0549 352.247 68.9062C351.687 69.7575 351.408 70.7426 351.408 71.8613C351.408 72.8584 351.626 73.7708 352.064 74.5977C352.502 75.4247 353.184 76.0819 354.108 76.5684C355.056 77.0547 356.248 77.2978 357.683 77.2979C358.34 77.2979 358.972 77.225 359.581 77.0791C360.189 76.9575 360.76 76.7627 361.295 76.4951C361.83 76.2276 362.317 75.887 362.754 75.4736C363.217 75.0601 363.643 74.5859 364.032 74.0508H364.178L364.689 76.8604H368.775V65.7324C368.775 64.1515 368.434 62.8133 367.753 61.7188C367.072 60.5999 366.099 59.7606 364.834 59.2012C363.57 58.6174 362.061 58.3252 360.31 58.3252ZM378.59 58.3252C377.058 58.3252 375.733 58.5811 374.614 59.0918C373.519 59.6026 372.68 60.2835 372.096 61.1348C371.512 61.9861 371.22 62.9346 371.22 63.9805C371.22 64.8805 371.415 65.6351 371.804 66.2432C372.218 66.8268 372.765 67.3131 373.446 67.7021C374.127 68.067 374.869 68.371 375.671 68.6143C376.498 68.8575 377.313 69.0887 378.116 69.3076C378.894 69.5265 379.563 69.7332 380.123 69.9277C380.706 70.1223 381.144 70.3536 381.436 70.6211C381.752 70.8643 381.911 71.2168 381.911 71.6787C381.911 72.0192 381.801 72.3361 381.583 72.6279C381.388 72.9197 381.084 73.1629 380.67 73.3574C380.257 73.5277 379.709 73.6133 379.028 73.6133C378.371 73.6132 377.788 73.5031 377.277 73.2842C376.79 73.0409 376.401 72.7251 376.109 72.3359C375.817 71.9469 375.623 71.5333 375.526 71.0957H370.6C370.722 72.2874 371.147 73.3581 371.876 74.3066C372.63 75.2309 373.616 75.96 374.833 76.4951C376.073 77.0302 377.496 77.2978 379.101 77.2979C380.706 77.2979 382.081 77.043 383.224 76.5322C384.367 75.9971 385.255 75.2789 385.887 74.3789C386.52 73.4789 386.824 72.4449 386.799 71.2773C386.799 70.0615 386.483 69.1254 385.851 68.4688C385.219 67.7878 384.367 67.2525 383.297 66.8633C382.227 66.4741 381.047 66.1091 379.758 65.7686C378.956 65.5496 378.262 65.3548 377.678 65.1846C377.119 64.99 376.693 64.7834 376.401 64.5645C376.109 64.3212 375.963 64.029 375.963 63.6885C375.963 63.2266 376.182 62.8376 376.62 62.5215C377.082 62.1809 377.739 62.0107 378.59 62.0107C379.393 62.0107 380.037 62.181 380.524 62.5215C381.035 62.862 381.352 63.3363 381.473 63.9443H386.106C385.887 62.1931 385.121 60.8186 383.808 59.8213C382.519 58.824 380.779 58.3252 378.59 58.3252ZM396.049 58.3252C394.517 58.3252 393.192 58.581 392.073 59.0918C390.978 59.6026 390.139 60.2835 389.555 61.1348C388.971 61.9861 388.679 62.9346 388.679 63.9805C388.679 64.8805 388.874 65.6351 389.263 66.2432C389.677 66.8268 390.224 67.3131 390.905 67.7021C391.586 68.067 392.328 68.371 393.13 68.6143C393.957 68.8575 394.772 69.0887 395.575 69.3076C396.353 69.5265 397.022 69.7332 397.582 69.9277C398.165 70.1223 398.603 70.3536 398.895 70.6211C399.211 70.8643 399.37 71.2168 399.37 71.6787C399.37 72.0192 399.26 72.3361 399.042 72.6279C398.847 72.9198 398.543 73.1629 398.129 73.3574C397.716 73.5277 397.168 73.6133 396.487 73.6133C395.83 73.6132 395.247 73.503 394.736 73.2842C394.25 73.041 393.861 72.725 393.569 72.3359C393.277 71.9469 393.082 71.5334 392.985 71.0957H388.059C388.181 72.2874 388.607 73.3581 389.336 74.3066C390.09 75.2307 391.076 75.9601 392.292 76.4951C393.532 77.0302 394.955 77.2978 396.56 77.2979C398.165 77.2979 399.54 77.043 400.683 76.5322C401.826 75.9971 402.714 75.2789 403.346 74.3789C403.979 73.4789 404.283 72.4449 404.258 71.2773C404.258 70.0615 403.942 69.1254 403.31 68.4688C402.678 67.7877 401.826 67.2525 400.756 66.8633C399.686 66.4741 398.506 66.1091 397.217 65.7686C396.415 65.5496 395.721 65.3548 395.137 65.1846C394.578 64.99 394.152 64.7834 393.86 64.5645C393.568 64.3212 393.422 64.0289 393.422 63.6885C393.422 63.2264 393.642 62.8376 394.08 62.5215C394.542 62.181 395.198 62.0108 396.049 62.0107C396.852 62.0107 397.496 62.181 397.983 62.5215C398.494 62.862 398.811 63.3362 398.932 63.9443H403.566C403.347 62.1931 402.58 60.8186 401.267 59.8213C399.978 58.824 398.238 58.3252 396.049 58.3252ZM415.333 58.3252C413.46 58.3252 411.806 58.7385 410.371 59.5654C408.96 60.3924 407.853 61.5358 407.05 62.9951C406.272 64.4302 405.883 66.0969 405.883 67.9941C405.883 69.8184 406.285 71.4359 407.087 72.8467C407.89 74.2573 408.996 75.3525 410.407 76.1309C411.842 76.9092 413.484 77.2978 415.333 77.2979C416.792 77.2979 418.105 77.0302 419.273 76.4951C420.441 75.9357 421.426 75.1938 422.229 74.2695C423.032 73.321 423.603 72.275 423.944 71.1318H418.945C418.629 71.7643 418.166 72.2877 417.558 72.7012C416.95 73.0902 416.196 73.2842 415.296 73.2842C414.421 73.2842 413.63 73.0904 412.924 72.7012C412.243 72.312 411.709 71.7639 411.32 71.0586C411.004 70.4658 410.818 69.7849 410.758 69.0156H424.417C424.442 68.6994 424.455 68.3954 424.455 68.1035C424.479 67.7874 424.491 67.5078 424.491 67.2646C424.491 65.562 424.102 64.0409 423.324 62.7031C422.545 61.3412 421.475 60.2715 420.113 59.4932C418.751 58.7148 417.157 58.3252 415.333 58.3252ZM428.791 53.8379L428.244 58.7627H425.142V62.7031H428.244V70.4023C428.244 72.032 428.511 73.3209 429.046 74.2695C429.582 75.1938 430.323 75.8629 431.272 76.2764C432.245 76.6655 433.376 76.8603 434.665 76.8604H437.875V72.7734H435.577C434.701 72.7734 434.081 72.6159 433.716 72.2998C433.352 71.9593 433.169 71.351 433.169 70.4756V62.7031H437.985V58.7627H433.169V53.8379H428.791ZM363.63 69.2344C363.557 69.7938 363.412 70.3418 363.193 70.877C362.998 71.3876 362.718 71.8375 362.353 72.2266C361.988 72.6156 361.55 72.9316 361.04 73.1748C360.553 73.3936 359.97 73.5039 359.289 73.5039C358.778 73.5039 358.315 73.4301 357.902 73.2842C357.489 73.1139 357.172 72.8708 356.954 72.5547C356.735 72.2385 356.625 71.8616 356.625 71.4238C356.625 70.9861 356.735 70.6092 356.954 70.293C357.173 69.9524 357.513 69.6966 357.975 69.5264C358.461 69.3318 359.082 69.2344 359.835 69.2344H363.63ZM415.37 62.2295C416.513 62.2296 417.461 62.57 418.215 63.251C418.994 63.932 419.42 64.8441 419.493 65.9873H410.859C410.961 65.4365 411.125 64.9499 411.356 64.5283C411.769 63.75 412.329 63.1783 413.035 62.8135C413.74 62.4244 414.518 62.2295 415.37 62.2295Z" fill="#667482"/>
+</g>
+<defs>
+<clipPath id="clip0_2435_5164_frenteasset">
+<rect width="131.812" height="70.5153" fill="white" transform="translate(328.791 30.7578)"/>
+</clipPath>
+</defs></svg></span>
+        <h3>Gestão de ativos imobiliários</h3>
+        <p>A inteligência de investimentos do grupo. A BRM Asset estrutura, administra e valoriza carteiras de ativos imobiliários, unindo conhecimento de mercado e visão de longo prazo para fazer o patrimônio render.</p>
+        <a href="#contato" class="lk">Conhecer a BRM Asset <span class="arrow">→</span></a>
+      </div>
+
+      <div class="frente reveal">
+        <span class="n">03</span>
+        <span class="badge"><svg class="frente-logo" viewBox="0 0 413 102" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="frenteib"><path d="M79.7402 57.1095C73.8854 51.0173 66.8074 49.849 62.2908 48.9101H62.2072C82.3749 44.6748 82.5422 29.4026 82.5422 26.2835C82.6049 20.1809 80.3884 14.287 76.3319 9.74915C67.7797 0.0058554 54.826 0.00585938 46.1274 0.00585938H0V101.236H51.5222C60.0535 101.236 68.5011 100.339 77.0637 93.819C82.9395 89.229 86.1491 80.894 86.1491 73.6021C86.2328 67.4787 83.9327 61.5743 79.7507 57.1095H79.7402ZM47.7375 86.1412H47.7479L19.1954 86.1516V14.5061H45.6988C50.2676 14.5061 62.5418 16.1647 62.5418 28.0152C62.5418 36.9657 55.9969 42.7345 46.2424 42.7345H35.7979V57.1721H47.7375C58.8407 57.1721 65.5005 63.3581 65.5005 71.5471C65.5005 80.9461 58.0566 86.1412 47.7375 86.1412Z" fill="#00458C"/>
+<path d="M122.783 14.6456H144.676C158.884 14.6456 164.52 21.9061 164.52 29.5213C164.52 42.0707 152.925 45.1377 142.961 45.1377H140.076L163.641 101.229H184.949L165.408 56.6231C171.148 54.3281 185.576 48.7262 185.576 29.7717H185.492C185.775 21.3115 182.042 13.2268 175.445 7.91705C168.545 2.45079 160.149 0.00976562 146.182 0.00976562H102.647V101.229H122.783V14.6456Z" fill="#00458C"/>
+<path d="M218.528 12.5912L249.652 101.241H260.243L291.305 12.5912V101.241H312.006V0H280.191L257.044 65.2717L233.698 0H202.072V101.241H218.517V12.5912H218.528Z" fill="#00458C"/>
+<path d="M79.7432 57.1133L79.7558 57.1259L79.7432 57.1133Z" fill="#00458C"/>
+<g clip-path="url(#clip0_2435_5201_frenteib)">
+<path d="M379.308 30.748C397.58 30.7482 412.392 45.561 412.392 63.833V68.1465C412.392 86.4186 397.58 101.231 379.308 101.231H328.691V63.833C328.691 45.5609 343.504 30.7481 361.776 30.748H379.308ZM355.444 51.6816V79.7422H360.855V51.6816H355.444ZM364.447 51.6816V79.7422H376.353C378.33 79.7422 380.001 79.4206 381.364 78.7793C382.753 78.1112 383.795 77.2027 384.49 76.0537C385.211 74.9046 385.573 73.5815 385.573 72.085C385.573 70.8558 385.279 69.7199 384.691 68.6777C384.13 67.6355 383.341 66.807 382.326 66.1924C381.646 65.7514 380.896 65.4531 380.077 65.29C380.594 65.1449 381.09 64.9534 381.564 64.71C382.579 64.1755 383.395 63.4269 384.009 62.4648C384.624 61.5029 384.931 60.3137 384.931 58.8975C384.931 57.4811 384.584 56.2379 383.889 55.1689C383.221 54.0733 382.219 53.2182 380.882 52.6035C379.546 51.9889 377.902 51.6816 375.952 51.6816H364.447ZM375.391 67.4355C376.861 67.4356 378.01 67.7961 378.838 68.5176C379.667 69.2124 380.081 70.1884 380.081 71.4443C380.08 72.7001 379.68 73.6621 378.878 74.3301C378.077 74.9981 376.941 75.332 375.471 75.332H369.859V67.4355H375.391ZM375.03 56.0107C376.473 56.0107 377.569 56.3447 378.317 57.0127C379.065 57.6541 379.439 58.5501 379.439 59.6992C379.439 60.8749 379.065 61.7835 378.317 62.4248C377.569 63.0661 376.486 63.3867 375.07 63.3867H369.859V56.0107H375.03Z" fill="#667482"/>
+</g>
+<defs>
+<clipPath id="clip0_2435_5201_frenteib">
+<rect width="83.4312" height="70.485" fill="white" transform="translate(329.05 30.7637)"/>
+</clipPath>
+</defs></svg></span>
+        <h3>Estruturação e negócios</h3>
+        <p>A frente de negócios estruturados do grupo. A BRM IB conecta capital e oportunidade, desenhando operações e viabilizando projetos que movimentam o mercado imobiliário com solidez e transparência.</p>
+        <a href="#contato" class="lk">Conhecer a BRM IB <span class="arrow">→</span></a>
+      </div>
+
+      <div class="frente reveal">
+        <span class="n">04</span>
+        <span class="badge"><svg class="frente-logo" viewBox="0 0 419 102" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="frenteinc"><path d="M79.7386 57.1083C73.884 51.0163 66.8061 49.848 62.2896 48.9091H62.206C82.3732 44.6739 82.5405 29.4021 82.5405 26.283C82.6032 20.1805 80.3868 14.2867 76.3304 9.74895C67.7784 0.0058554 54.8249 0.00585938 46.1265 0.00585938H0V101.234H51.5212C60.0523 101.234 68.4997 100.337 77.0622 93.8171C82.9378 89.2272 86.1474 80.8923 86.1474 73.6007C86.231 67.4773 83.931 61.5731 79.7491 57.1083H79.7386ZM47.7365 86.1394H47.747L19.195 86.1499V14.5058H45.6979C50.2666 14.5058 62.5405 16.1644 62.5405 28.0147C62.5405 36.965 55.9958 42.7336 46.2415 42.7336H35.7972V57.1709H47.7365C58.8395 57.1709 65.4992 63.3569 65.4992 71.5456C65.4992 80.9445 58.0554 86.1394 47.7365 86.1394Z" fill="#00458C"/>
+<path d="M122.781 14.6453H144.673C158.881 14.6453 164.516 21.9056 164.516 29.5207C164.516 42.0699 152.922 45.1368 142.959 45.1368H140.073L163.638 101.227H184.945L165.405 56.6219C171.145 54.327 185.572 48.7253 185.572 29.7711H185.489C185.771 21.3111 182.039 13.2266 175.442 7.91689C168.542 2.45074 160.146 0.00976562 146.179 0.00976562H102.645V101.227H122.781V14.6453Z" fill="#00458C"/>
+<path d="M218.524 12.5909L249.648 101.238H260.238L291.299 12.5909V101.238H312V0H280.186L257.039 65.2704L233.694 0H202.068V101.238H218.513V12.5909H218.524Z" fill="#00458C"/>
+<path d="M79.7412 57.1113L79.7531 57.1232L79.7412 57.1113Z" fill="#00458C"/>
+<g clip-path="url(#clip0_2435_5236_frenteinc)">
+<path d="M384.949 30.7344C403.221 30.7346 418.033 45.5467 418.033 63.8184V68.1318C418.033 86.4035 403.221 101.216 384.949 101.216H327.965V63.8184C327.965 45.5465 342.777 30.7344 361.049 30.7344H384.949ZM389.421 59.3604C387.363 59.3604 385.546 59.8143 383.969 60.7227C382.393 61.6045 381.163 62.8345 380.281 64.4111C379.399 65.961 378.959 67.7514 378.959 69.7822C378.959 71.813 379.386 73.6168 380.241 75.1934C381.123 76.7432 382.339 77.9733 383.888 78.8818C385.465 79.7637 387.31 80.2041 389.421 80.2041C391.986 80.2041 394.137 79.5229 395.874 78.1602C397.638 76.7973 398.76 74.9662 399.241 72.668H393.51C393.376 73.2825 393.108 73.8173 392.708 74.2715C392.307 74.6991 391.826 75.0339 391.264 75.2744C390.703 75.4881 390.075 75.5947 389.381 75.5947C388.659 75.5947 387.991 75.4738 387.377 75.2334C386.789 74.9662 386.281 74.579 385.853 74.0713C385.426 73.5636 385.092 72.949 384.851 72.2275C384.611 71.506 384.49 70.6908 384.49 69.7822C384.49 68.5263 384.704 67.457 385.132 66.5752C385.559 65.6935 386.134 65.0255 386.855 64.5713C387.603 64.0903 388.445 63.8496 389.381 63.8496C390.396 63.8496 391.278 64.1169 392.026 64.6514C392.801 65.1858 393.296 65.9344 393.51 66.8965H399.241C398.76 64.5448 397.638 62.7004 395.874 61.3643C394.137 60.0283 391.986 59.3604 389.421 59.3604ZM347.553 59.8408V79.7236H352.966V59.8408H347.553ZM368.802 59.3604C367.145 59.3604 365.768 59.6942 364.673 60.3623C363.577 61.0036 362.708 61.9122 362.067 63.0879H361.907L361.426 59.8408H356.816V79.7236H362.227V69.4619C362.227 68.2861 362.428 67.2968 362.829 66.4951C363.23 65.6668 363.791 65.0389 364.512 64.6113C365.234 64.157 366.049 63.9297 366.958 63.9297C368.401 63.9297 369.457 64.3711 370.125 65.2529C370.793 66.1347 371.127 67.404 371.127 69.0605V79.7236H376.538V68.5801C376.538 66.5759 376.231 64.8922 375.616 63.5293C375.028 62.1664 374.16 61.1372 373.01 60.4424C371.861 59.7209 370.458 59.3604 368.802 59.3604ZM350.279 51.1826C349.291 51.1827 348.476 51.4769 347.835 52.0645C347.22 52.6524 346.912 53.3877 346.912 54.2695C346.912 55.1514 347.22 55.8857 347.835 56.4736C348.476 57.0347 349.29 57.3154 350.279 57.3154C351.268 57.3154 352.07 57.0215 352.684 56.4336C353.299 55.8457 353.606 55.1246 353.606 54.2695C353.606 53.3877 353.299 52.6524 352.684 52.0645C352.07 51.4767 351.268 51.1826 350.279 51.1826Z" fill="#667482"/>
+</g>
+<defs>
+<clipPath id="clip0_2435_5236_frenteinc">
+<rect width="89.9025" height="70.4836" fill="white" transform="translate(328.324 30.7617)"/>
+</clipPath>
+</defs></svg></span>
+        <h3>Incorporação imobiliária</h3>
+        <p>A frente que constrói o futuro do grupo. A BRM Inc concebe e desenvolve empreendimentos do zero — do terreno à entrega das chaves — traduzindo em concreto a experiência de 45 anos de mercado.</p>
+        <a href="#contato" class="lk">Conhecer a BRM Inc <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ATUAÇÃO ============ -->
+<section class="band" id="atuacao">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Como atuamos</span>
+      <h2>Do primeiro contato à <em>entrega das chaves</em>.</h2>
+      <p>Reunimos, sob um mesmo grupo, tudo o que envolve morar e investir bem. É o ciclo imobiliário completo — sem intermediários desnecessários, sem promessas que não se cumprem.</p>
+    </div>
+    <div class="serv-grid reveal">
+      <div class="serv">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+        <h3>Compra e venda</h3>
+        <p>Assessoria consultiva para encontrar — ou vender — o imóvel certo, com leitura real do mercado de Brasília.</p>
+      </div>
+      <div class="serv">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>
+        <h3>Locação</h3>
+        <p>Gestão de aluguel segura para proprietários e inquilinos, com condições que protegem os dois lados.</p>
+      </div>
+      <div class="serv">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+        <h3>Gestão de ativos</h3>
+        <p>Administração profissional de carteiras imobiliárias com foco em valorização e previsibilidade.</p>
+      </div>
+      <div class="serv">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <h3>Estruturação de negócios</h3>
+        <p>Desenho de operações que conectam capital e oportunidade com transparência e método.</p>
+      </div>
+      <div class="serv">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 20h20M4 20V8l8-5 8 5v12M9 20v-5h6v5M9 11h.01M15 11h.01"/></svg>
+        <h3>Incorporação</h3>
+        <p>Desenvolvimento de empreendimentos do terreno à entrega, com padrão de qualidade assinado pelo grupo.</p>
+      </div>
+      <div class="serv">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <h3>Relacionamento</h3>
+        <p>Um atendimento que não termina na assinatura — acompanhamos o cliente ao longo de toda a jornada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFÓLIO ============ -->
+<section class="band portfolio" id="portfolio">
+  <div class="wrap">
+    <div class="frentes-intro reveal">
+      <div style="max-width:640px">
+        <span class="eyebrow">Portfólio</span>
+        <h2 style="font-size:clamp(2.1rem,4vw,3.2rem);margin-top:22px;color:var(--navy)">Empreendimentos <em style="font-weight:500;color:var(--royal)">já entregues</em>.</h2>
+      </div>
+      <p style="max-width:380px;color:var(--text-soft);font-size:1.05rem">45 anos de história se medem em chaves entregues. Conheça alguns dos empreendimentos que ajudamos a realizar.</p>
+    </div>
+
+    <div class="port-grid">
+      <div class="port-card reveal">
+        <div class="port-img"><span class="port-status">Entregue</span><span class="port-ph">[ foto do empreendimento ]</span></div>
+        <div class="port-body">
+          <h3>[ Nome do Empreendimento ]</h3>
+          <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>[ Bairro, Brasília — DF ]</div>
+          <div class="port-specs">
+            <div class="port-spec"><div class="v">[ 2020 ]</div><div class="k">Entrega</div></div>
+            <div class="port-spec"><div class="v">[ 120 ]</div><div class="k">Unidades</div></div>
+            <div class="port-spec"><div class="v">[ Residencial ]</div><div class="k">Tipo</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="port-card reveal">
+        <div class="port-img g2"><span class="port-status">Entregue</span><span class="port-ph">[ foto do empreendimento ]</span></div>
+        <div class="port-body">
+          <h3>[ Nome do Empreendimento ]</h3>
+          <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>[ Bairro, Brasília — DF ]</div>
+          <div class="port-specs">
+            <div class="port-spec"><div class="v">[ 2019 ]</div><div class="k">Entrega</div></div>
+            <div class="port-spec"><div class="v">[ 88 ]</div><div class="k">Unidades</div></div>
+            <div class="port-spec"><div class="v">[ Residencial ]</div><div class="k">Tipo</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="port-card reveal">
+        <div class="port-img g3"><span class="port-status">Entregue</span><span class="port-ph">[ foto do empreendimento ]</span></div>
+        <div class="port-body">
+          <h3>[ Nome do Empreendimento ]</h3>
+          <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>[ Bairro, Brasília — DF ]</div>
+          <div class="port-specs">
+            <div class="port-spec"><div class="v">[ 2018 ]</div><div class="k">Entrega</div></div>
+            <div class="port-spec"><div class="v">[ 200 ]</div><div class="k">Unidades</div></div>
+            <div class="port-spec"><div class="v">[ Comercial ]</div><div class="k">Tipo</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="port-card reveal">
+        <div class="port-img g4"><span class="port-status">Entregue</span><span class="port-ph">[ foto do empreendimento ]</span></div>
+        <div class="port-body">
+          <h3>[ Nome do Empreendimento ]</h3>
+          <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>[ Bairro, Brasília — DF ]</div>
+          <div class="port-specs">
+            <div class="port-spec"><div class="v">[ 2016 ]</div><div class="k">Entrega</div></div>
+            <div class="port-spec"><div class="v">[ 64 ]</div><div class="k">Unidades</div></div>
+            <div class="port-spec"><div class="v">[ Residencial ]</div><div class="k">Tipo</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="port-card reveal">
+        <div class="port-img g5"><span class="port-status">Entregue</span><span class="port-ph">[ foto do empreendimento ]</span></div>
+        <div class="port-body">
+          <h3>[ Nome do Empreendimento ]</h3>
+          <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>[ Bairro, Brasília — DF ]</div>
+          <div class="port-specs">
+            <div class="port-spec"><div class="v">[ 2014 ]</div><div class="k">Entrega</div></div>
+            <div class="port-spec"><div class="v">[ 150 ]</div><div class="k">Unidades</div></div>
+            <div class="port-spec"><div class="v">[ Residencial ]</div><div class="k">Tipo</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="port-card reveal">
+        <div class="port-img g6"><span class="port-status">Entregue</span><span class="port-ph">[ foto do empreendimento ]</span></div>
+        <div class="port-body">
+          <h3>[ Nome do Empreendimento ]</h3>
+          <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>[ Bairro, Brasília — DF ]</div>
+          <div class="port-specs">
+            <div class="port-spec"><div class="v">[ 2012 ]</div><div class="k">Entrega</div></div>
+            <div class="port-spec"><div class="v">[ 96 ]</div><div class="k">Unidades</div></div>
+            <div class="port-spec"><div class="v">[ Residencial ]</div><div class="k">Tipo</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CREED / DIFERENCIAIS ============ -->
+<section class="creed" id="creed">
+  <svg class="creed-arcs" viewBox="0 0 1200 1200" fill="none"><circle cx="600" cy="600" r="300" stroke="#5B7DF7" stroke-width="1"/><circle cx="600" cy="600" r="470" stroke="#4E74D8" stroke-width="1"/><circle cx="600" cy="600" r="640" stroke="#3A5CB8" stroke-width="1"/></svg>
+  <div class="wrap">
+    <span class="eyebrow" style="color:#8DA9F5">Nossa visão</span>
+    <blockquote style="margin-top:30px">
+      Não vendemos metros quadrados. Vendemos o <em>lugar</em> onde uma vida vai acontecer — e a <em>segurança</em> de quem confia num nome há 45 anos.
+    </blockquote>
+    <div class="sig"><span class="bar"></span>Grupo Beiramar · Brasília, DF</div>
+  </div>
+</section>
+
+<!-- ============ BLOG ============ -->
+<section class="band band-mist" id="blog">
+  <div class="wrap">
+    <div class="frentes-intro reveal">
+      <div style="max-width:640px">
+        <span class="eyebrow">Blog Beiramar</span>
+        <h2 style="font-size:clamp(2.1rem,4vw,3.2rem);margin-top:22px;color:var(--navy)">Mercado, grupo e <em style="font-weight:500;color:var(--royal)">investimentos</em>.</h2>
+      </div>
+      <p style="max-width:380px;color:var(--text-soft);font-size:1.05rem">Análises do mercado imobiliário de Brasília, novidades do grupo e conteúdo sobre investimento em imóveis.</p>
+    </div>
+
+    <div class="blog-grid">
+      <!-- destaque -->
+      <a href="blog.html" class="post post-feature reveal">
+        <div class="post-media"><span class="post-cat">Mercado</span></div>
+        <div class="post-body">
+          <div class="post-meta">Mercado imobiliário · 8 min de leitura</div>
+          <h3>O que muda no mercado de Águas Claras em 2026 — e como se posicionar</h3>
+          <p>Uma leitura dos ciclos de valorização da região, o que os números mostram e onde estão as melhores oportunidades para quem quer comprar ou investir neste ano.</p>
+          <span class="post-lk">Ler artigo <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <!-- lista lateral -->
+      <div class="post-list">
+        <a href="blog.html" class="post post-mini reveal">
+          <span class="post-cat cat-grupo">Grupo</span>
+          <h4>45 anos: a história que construiu a confiança da Beiramar</h4>
+          <div class="post-meta">Novidades do grupo · 5 min</div>
+        </a>
+        <a href="blog.html" class="post post-mini reveal">
+          <span class="post-cat cat-invest">Investimentos</span>
+          <h4>Por que o imóvel volta a ser o ativo preferido do investidor</h4>
+          <div class="post-meta">BRM Asset · 6 min</div>
+        </a>
+        <a href="blog.html" class="post post-mini reveal">
+          <span class="post-cat">Mercado</span>
+          <h4>Comprar na planta ou pronto? O que pesa na decisão em 2026</h4>
+          <div class="post-meta">Mercado imobiliário · 7 min</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="blog-all reveal">
+      <a href="blog.html" class="btn btn-ghost">Ver todos os artigos <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATO ============ -->
+<section class="contact" id="contato">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <span class="eyebrow">Fale com o Grupo</span>
+        <h2 style="margin-top:22px">Vamos conversar sobre o seu <em>próximo passo</em>.</h2>
+        <p class="sub">Seja para encontrar um imóvel, investir com inteligência ou conhecer uma das frentes do grupo — nossa equipe está pronta para atender.</p>
+        <div class="contact-info">
+          <div class="ci">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div><div class="k">Telefone</div><div class="v"><a href="tel:+556132621001">(61) 3262-1001</a></div></div>
+          </div>
+          <div class="ci">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            <div><div class="k">E-mail</div><div class="v"><a href="mailto:contato@grupobeiramar.com.br">contato@grupobeiramar.com.br</a></div></div>
+          </div>
+        </div>
+
+        <div class="units">
+          <div class="units-title"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Nossas unidades</div>
+          <div class="unit">
+            <div class="unit-name">Asa Sul <span class="unit-badge">Sede</span></div>
+            <div class="unit-addr">CLS 402, Bloco A, Loja 27 · Asa Sul, Brasília — DF · 70236-510</div>
+          </div>
+          <div class="unit">
+            <div class="unit-name">Águas Claras</div>
+            <div class="unit-addr">Ed. The Park · R. 17 Norte, 3 · Águas Claras, Brasília — DF · 71910-540</div>
+          </div>
+          <div class="unit">
+            <div class="unit-name">Taguatinga</div>
+            <div class="unit-addr">St. A Norte, Lojas 01/02 · Taguatinga, Brasília — DF · 72110-025</div>
+          </div>
+          <div class="unit">
+            <div class="unit-name">Florianópolis</div>
+            <div class="unit-addr">Rua Bocaiúva, 2125 · Centro, Florianópolis — SC · 88015-530</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <form id="contactForm">
+          <div class="field"><label for="nome">Nome</label><input type="text" id="nome" name="nome" placeholder="Como podemos te chamar?" required></div>
+          <div class="field"><label for="email">E-mail</label><input type="email" id="email" name="email" placeholder="seu@email.com" required></div>
+          <div class="field"><label for="assunto">Sobre o que você quer falar?</label>
+            <select id="assunto" name="assunto">
+              <option>Comprar ou vender um imóvel</option>
+              <option>Locação</option>
+              <option>Investir com a BRM Asset</option>
+              <option>Negócios / BRM IB</option>
+              <option>Incorporação / BRM Inc</option>
+              <option>Outro assunto</option>
+            </select>
+          </div>
+          <div class="field"><label for="msg">Mensagem</label><textarea id="msg" name="msg" placeholder="Conte um pouco sobre o que você procura."></textarea></div>
+          <button type="submit" class="btn btn-primary">Enviar mensagem <span class="arrow">→</span></button>
+          <p class="form-note">Retornamos em até 1 dia útil.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#top" class="brand"><svg class="logo logo-neg" viewBox="0 0 2466 265" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grupo Beiramar"><path d="M851.474 149.402H959.987V111.057H851.474V39.3625H986.676V0.138672H799.021V264.114H988.48V223.502H851.474V149.402Z" fill="#EEF5FF"/>
+<path d="M1083.27 0.138672H1030.77V264.114H1083.27V0.138672Z" fill="#EEF5FF"/>
+<path d="M1354.02 77.7539C1354.38 66.8702 1352.19 56.0525 1347.64 46.1602C1343.09 36.2679 1336.29 27.5737 1327.79 20.7682C1309.89 6.5218 1287.92 0.138672 1251.61 0.138672H1138.15V264.114H1190.74V38.2524H1247.68C1284.68 38.2524 1299.34 57.1706 1299.34 77.06C1299.34 109.808 1269.18 117.81 1243.33 117.81H1235.65L1297.12 264.114H1352.63L1301.29 147.737C1316.18 141.816 1353.83 127.2 1353.83 77.7539" fill="#EEF5FF"/>
+<path d="M657.812 224.658H583.481V37.79H652.447C664.381 37.79 696.343 42.1379 696.343 73.0359C696.343 96.1632 679.321 111.427 653.881 111.427H626.729V149.078H657.812C686.722 149.078 704.067 165.221 704.067 186.591C704.067 211.106 684.686 224.658 657.812 224.658ZM695.464 127.524C747.963 116.423 748.425 76.4126 748.425 68.503C748.574 52.6067 742.804 37.2236 732.236 25.3475C709.941 -1.98503e-05 676.222 0 653.603 0H533.526V264.114H667.433C689.636 264.114 711.653 261.801 733.947 244.825C749.258 232.846 757.584 211.106 757.584 192.095C757.793 176.145 751.827 160.731 740.932 149.078C725.668 133.167 707.259 130.114 695.464 127.663" fill="#EEF5FF"/>
+<path d="M2062.46 0.138672L1965.33 264.114H2010.52L2012 260.275L2088.69 45.3294L2136.38 175.629H2072.59V176.461C2134.34 184.741 2162.1 246.953 2165.1 254.4L2167.46 261.015L2168.57 264.114H2224.68L2126.85 0.138672H2062.46Z" fill="#EEF5FF"/>
+<path d="M1468.11 0.138672L1370.98 264.114H1416.03L1417.42 260.275L1494.43 45.3294L1542.08 175.629H1478.24V176.461C1543.97 185.25 1571.45 255.88 1571.45 255.88L1573.94 262.633L1574.41 264.114H1630.56L1532.45 0.138672H1468.11Z" fill="#EEF5FF"/>
+<path d="M2464.94 77.7539C2465.3 66.8756 2463.12 56.0639 2458.57 46.1736C2454.03 36.2833 2447.25 27.5856 2438.76 20.7682C2420.77 6.5218 2398.94 0.138672 2362.58 0.138672H2249.21V264.114H2301.67V38.2524H2358.65C2395.65 38.2524 2410.32 57.1706 2410.32 77.06C2410.32 109.808 2380.16 117.81 2354.21 117.81H2346.67L2408.33 264.114H2463.83L2412.58 147.737C2427.52 141.816 2465.08 127.2 2465.08 77.7539" fill="#EEF5FF"/>
+<path d="M1797.92 170.356L1737.14 0.138672H1654.8V264.16H1697.64V32.9794L1778.67 264.16H1806.24L1887.14 32.9794V264.16H1941.03V0.138672H1858.19L1797.92 170.356Z" fill="#EEF5FF"/>
+<g clip-path="url(#clip_fneg)">
+<path d="M493.526 138.936L493.517 140.531C492.65 208.955 436.93 264.139 368.301 264.139H125.226C56.0556 264.138 0 208.082 0 138.912V125.365C9.16384e-07 56.1952 56.0556 0.139861 125.226 0.139648H493.526V138.936ZM101.43 94.4736C95.6923 94.4737 90.7293 95.612 86.54 97.8887C82.4418 100.074 79.2534 103.034 76.9766 106.768C74.7909 110.501 73.6983 114.646 73.6982 119.199C73.6982 123.753 74.7909 127.897 76.9766 131.631C78.1797 133.604 79.6398 135.359 81.3516 136.899L69.5996 148.98V152.122C70.7836 153.306 72.3326 154.491 74.2451 155.675C75.2007 156.266 76.2473 156.835 77.3848 157.381C74.8 159.339 72.7972 161.502 71.376 163.871C69.7367 166.512 68.917 169.427 68.917 172.614C68.917 176.895 70.2378 180.538 72.8789 183.543C75.6111 186.639 79.391 188.962 84.2178 190.51C89.1356 192.058 94.8279 192.832 101.294 192.832C108.397 192.832 114.226 191.739 118.779 189.554C123.333 187.368 126.703 184.545 128.889 181.084C131.166 177.714 132.304 174.253 132.304 170.701C132.304 166.603 131.394 163.142 129.572 160.319C127.751 157.496 124.927 155.264 121.102 153.625C117.277 151.986 112.358 150.939 106.348 150.483C102.796 150.119 99.8365 149.801 97.4688 149.527C95.1919 149.163 93.2787 148.798 91.7305 148.434C90.2735 148.069 89.0437 147.705 88.042 147.341C87.688 147.212 87.3407 147.081 86.998 146.952L91.123 142.369C94.2248 143.313 97.6594 143.789 101.43 143.789C107.167 143.789 112.085 142.696 116.184 140.511C120.373 138.325 123.561 135.365 125.747 131.631C127.933 127.897 129.025 123.753 129.025 119.199C129.025 114.834 128.018 110.847 126.01 107.235L137.905 106.085V96.1123H112.174C108.986 95.0197 105.404 94.4736 101.43 94.4736ZM316.2 94.4736C312.466 94.4736 309.006 95.0195 305.818 96.1123C302.722 97.2052 299.943 98.7532 297.484 100.757C295.117 102.76 293.067 105.174 291.337 107.997H290.791L289.698 96.1123H274.261V191.193H292.703V155.128C294.98 157.951 298.031 160.41 301.856 162.505C305.772 164.508 310.371 165.511 315.653 165.511C322.302 165.511 328.039 164.007 332.866 161.002C337.693 157.906 341.427 153.671 344.068 148.298C346.709 142.925 348.03 136.823 348.03 129.992C348.03 123.162 346.709 117.059 344.068 111.686C341.427 106.312 337.739 102.123 333.003 99.1182C328.267 96.0217 322.666 94.4736 316.2 94.4736ZM92.4111 161.73C95.5005 162.217 98.9618 162.614 102.796 162.915C107.805 163.279 111.175 164.099 112.905 165.374C114.636 166.74 115.501 168.652 115.501 171.111C115.501 172.842 114.954 174.344 113.861 175.619C112.768 176.985 111.175 178.033 109.08 178.762C106.986 179.49 104.39 179.854 101.294 179.854C98.1975 179.854 95.4646 179.49 93.0967 178.762C90.7289 178.124 88.8622 177.168 87.4961 175.893C86.2211 174.618 85.583 173.069 85.583 171.248C85.583 168.789 86.494 166.603 88.3154 164.69C89.3369 163.618 90.7022 162.631 92.4111 161.73ZM195.385 96.1123V134.09C195.385 140.92 196.432 146.704 198.526 151.439C200.621 156.084 203.627 159.59 207.543 161.958C211.459 164.326 216.195 165.511 221.75 165.511C227.397 165.511 232.087 164.417 235.821 162.231C239.646 159.955 242.607 156.904 244.701 153.079H245.247L246.887 163.871H262.597V96.1123H244.154V131.085C244.154 135.001 243.471 138.37 242.105 141.193C240.739 144.017 238.827 146.203 236.368 147.751C234 149.208 231.222 149.937 228.034 149.937C223.116 149.936 219.473 148.434 217.105 145.429C214.829 142.423 213.69 138.097 213.69 132.451V96.1123H195.385ZM389.744 94.4736C383.278 94.4737 377.404 95.9761 372.122 98.9814C366.84 101.987 362.65 106.176 359.554 111.55C356.457 116.832 354.909 122.98 354.909 129.992C354.909 136.913 356.412 143.06 359.417 148.434C362.513 153.807 366.703 157.997 371.985 161.002C377.268 164.007 383.187 165.511 389.744 165.511C396.301 165.511 402.176 164.007 407.367 161.002C412.649 157.997 416.839 153.853 419.936 148.57C423.032 143.197 424.58 137.004 424.58 129.992C424.58 122.98 423.032 116.832 419.936 111.55C416.93 106.177 412.786 101.987 407.504 98.9814C402.222 95.976 396.301 94.4736 389.744 94.4736ZM189.869 94.4736C186.044 94.4736 182.583 94.8825 179.486 95.7021C176.481 96.4308 173.795 97.9798 171.427 100.348C169.059 102.624 166.873 106.176 164.869 111.003H164.323L162.684 96.1123H146.974V163.871H165.416V133.134C165.416 129.673 165.826 126.713 166.646 124.254C167.556 121.795 168.831 119.837 170.471 118.38C172.11 116.832 174.114 115.739 176.481 115.102C178.94 114.373 181.718 114.009 184.814 114.009H189.869V94.4736ZM310.872 109.637C314.606 109.637 317.839 110.502 320.571 112.232C323.395 113.963 325.535 116.376 326.992 119.473C328.54 122.478 329.314 126.03 329.314 130.128C329.314 134.135 328.54 137.688 326.992 140.784C325.535 143.789 323.394 146.157 320.571 147.888C317.839 149.618 314.606 150.483 310.872 150.483C307.229 150.483 303.996 149.618 301.173 147.888C298.35 146.157 296.164 143.789 294.616 140.784C293.068 137.688 292.294 134.135 292.294 130.128C292.294 126.03 293.068 122.478 294.616 119.473C296.164 116.376 298.35 113.963 301.173 112.232C303.996 110.502 307.229 109.637 310.872 109.637ZM389.881 110.047C392.704 110.047 395.3 110.775 397.668 112.232C400.127 113.69 402.085 115.921 403.542 118.927C404.999 121.841 405.728 125.53 405.728 129.992C405.727 134.454 404.999 138.188 403.542 141.193C402.085 144.108 400.127 146.294 397.668 147.751C395.3 149.208 392.613 149.937 389.607 149.937C386.784 149.936 384.143 149.208 381.685 147.751C379.317 146.294 377.404 144.108 375.947 141.193C374.49 138.188 373.761 134.455 373.761 129.992C373.761 125.53 374.49 121.841 375.947 118.927C377.404 115.921 379.362 113.69 381.821 112.232C384.28 110.775 386.967 110.047 389.881 110.047ZM101.43 107.997C104.981 107.997 107.85 108.954 110.036 110.866C112.313 112.688 113.452 115.465 113.452 119.199C113.452 122.933 112.313 125.756 110.036 127.669C107.85 129.49 104.937 130.401 101.294 130.401C97.7421 130.401 94.8276 129.49 92.5508 127.669C90.3651 125.756 89.2715 122.933 89.2715 119.199C89.2715 115.465 90.3651 112.688 92.5508 110.866C94.8275 108.954 97.7871 107.997 101.43 107.997Z" fill="#EEF5FF"/>
+</g>
+<defs>
+<clipPath id="clip_fneg">
+<rect width="493.526" height="264.021" fill="white" transform="translate(0 0.138184)"/>
+</clipPath>
+</defs></svg></a>
+        <p>Há 45 anos construindo o jeito de morar e investir de Brasília.</p>
+      </div>
+      <div class="foot-col">
+        <h4>O Grupo</h4>
+        <a href="#grupo">Nossa história</a>
+        <a href="#frentes">Frentes</a>
+        <a href="#atuacao">Atuação</a>
+        <a href="#blog">Blog</a>
+      </div>
+      <div class="foot-col">
+        <h4>Frentes</h4>
+        <a href="#frentes">Beiramar Imóveis</a>
+        <a href="#frentes">BRM Asset</a>
+        <a href="#frentes">BRM IB</a>
+        <a href="#frentes">BRM Inc</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contato</h4>
+        <a href="tel:+556132621001">(61) 3262-1001</a>
+        <a href="mailto:contato@grupobeiramar.com.br">contato@grupobeiramar.com.br</a>
+      </div>
+    </div>
+
+    <div class="foot-addr">
+      <div>
+        <div class="foot-unit-name">Asa Sul <span class="foot-unit-badge">Sede</span></div>
+        <div class="foot-unit-addr">CLS 402, Bloco A, Loja 27<br>Asa Sul, Brasília — DF · 70236-510</div>
+      </div>
+      <div>
+        <div class="foot-unit-name">Águas Claras</div>
+        <div class="foot-unit-addr">Ed. The Park · R. 17 Norte, 3<br>Águas Claras, Brasília — DF · 71910-540</div>
+      </div>
+      <div>
+        <div class="foot-unit-name">Taguatinga</div>
+        <div class="foot-unit-addr">St. A Norte, Lojas 01/02<br>Taguatinga, Brasília — DF · 72110-025</div>
+      </div>
+      <div>
+        <div class="foot-unit-name">Florianópolis</div>
+        <div class="foot-unit-addr">Rua Bocaiúva, 2125<br>Centro, Florianópolis — SC · 88015-530</div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <p>© 2026 Grupo Beiramar. Todos os direitos reservados.</p>
+      <div class="foot-social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM6 9H2v12h4zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // header scroll state
+  const header=document.getElementById('header');
+  const hero=document.querySelector('.hero');
+  const onScroll=()=>{
+    const scrolled=window.scrollY>40;
+    header.classList.toggle('scrolled',scrolled);
+    // keep white text only while over the dark hero
+    const overHero=window.scrollY < hero.offsetHeight-90;
+    header.classList.toggle('on-dark',overHero);
+  };
+  window.addEventListener('scroll',onScroll);onScroll();
+
+  // mobile menu
+  const mm=document.getElementById('mobileMenu');
+  document.getElementById('burger').onclick=()=>mm.classList.add('open');
+  document.getElementById('closeMenu').onclick=()=>mm.classList.remove('open');
+  mm.querySelectorAll('a').forEach(a=>a.onclick=()=>mm.classList.remove('open'));
+
+  // reveal on scroll
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+  },{threshold:.14});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*.08)+'s';io.observe(el)});
+
+  // count-up dos big numbers
+  const fmt=(v,dec)=>dec?v.toFixed(dec):Math.round(v).toString();
+  const runCount=(el)=>{
+    const to=parseFloat(el.dataset.to),dec=parseInt(el.dataset.dec||0);
+    const pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';
+    const suffixHTML=suf?'<span class="u">'+suf+'</span>':'';
+    const dur=1300,t0=performance.now();
+    const step=(t)=>{
+      const p=Math.min((t-t0)/dur,1);
+      const e=1-Math.pow(1-p,3); // easeOutCubic
+      el.innerHTML=pre+fmt(to*e,dec)+suffixHTML;
+      if(p<1)requestAnimationFrame(step);
+      else el.innerHTML=pre+fmt(to,dec)+suffixHTML;
+    };
+    requestAnimationFrame(step);
+  };
+  const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const bnIO=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){if(!reduce)runCount(e.target);bnIO.unobserve(e.target)}})
+  },{threshold:.6});
+  document.querySelectorAll('.bn-num').forEach(el=>bnIO.observe(el));
+
+  document.getElementById('contactForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const btn=this.querySelector('button');
+    btn.innerHTML='Mensagem enviada ✓';
+    btn.style.background='var(--royal)';
+    setTimeout(()=>{this.reset();btn.innerHTML='Enviar mensagem <span class="arrow">→</span>';btn.style.background='';},2600);
+  });
+</script>
+</body>
+</html>
