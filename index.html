@@ -305,6 +305,14 @@
 
   font-family:var(--display);font-style:italic;font-size:1.35rem;color:var(--navy);line-height:1.4}
 
+    /* ---------- atuacao / services ---------- */
+  .serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  @media(max-width:820px){.serv-grid{grid-template-columns:1fr}}
+  .serv{padding:48px 40px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:.4s var(--ease);background:var(--white)}
+  .serv:hover{background:var(--mist)}
+  .serv .ico{width:44px;height:44px;color:var(--royal);margin-bottom:26px}
+  .serv h3{font-size:1.25rem;color:var(--navy);margin-bottom:12px;font-family:var(--display);font-weight:400}
+  .serv p{color:var(--text-soft);font-size:.98rem}
 
   /* ---------- diferenciais / dark quote ---------- */
   .creed{background:var(--ink);color:#fff;padding:140px 0;position:relative;overflow:hidden}
