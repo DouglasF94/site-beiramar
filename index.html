@@ -260,32 +260,59 @@
   .frente:hover .lk{color:var(--royal)}
   .frente .n{position:absolute;top:38px;right:44px;font-family:var(--display);font-size:1rem;color:var(--steel)}
 
-  /* ---------- fundador ---------- */
-  .founder{background:var(--white)}
-  .founder-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:center}
-  @media(max-width:900px){.founder-grid{grid-template-columns:1fr;gap:44px}}
-  .founder-photo{position:relative}
-  .founder-img{aspect-ratio:4/5;border-radius:6px;overflow:hidden;position:relative;
-    background:linear-gradient(150deg,#0A5AB4,#001320);display:flex;align-items:center;justify-content:center}
-  .founder-ph{color:rgba(255,255,255,.5);font-size:14px;letter-spacing:.05em}
-  .founder-caption{margin-top:22px;padding-left:20px;border-left:3px solid var(--royal)}
-  .founder-name{font-family:var(--display);font-size:1.5rem;color:var(--navy);font-weight:500}
-  .founder-role{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-soft);font-weight:600;margin-top:4px}
-  .founder-copy h2{font-size:clamp(1.9rem,3.6vw,2.8rem);color:var(--navy);margin-top:20px}
-  .founder-copy h2 em{font-style:normal;font-weight:500;color:var(--royal)}
-  .founder-copy p{color:var(--text-soft);font-size:1.06rem;margin-bottom:20px}
-  .founder-copy p.lead{font-family:var(--display);font-size:1.4rem;line-height:1.4;color:var(--text);font-weight:400;margin:26px 0 24px}
-  .founder-quote{border-left:3px solid var(--royal);padding:4px 0 4px 26px;margin:30px 0 0;
-    font-family:var(--display);font-style:italic;font-size:1.35rem;color:var(--navy);line-height:1.4}
+/* ---------- fundador ---------- */
 
-  /* ---------- atuacao / services ---------- */
-  .serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden}
-  @media(max-width:820px){.serv-grid{grid-template-columns:1fr}}
-  .serv{padding:48px 40px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:.4s var(--ease);background:var(--white)}
-  .serv:hover{background:var(--mist)}
-  .serv .ico{width:44px;height:44px;color:var(--royal);margin-bottom:26px}
-  .serv h3{font-size:1.25rem;color:var(--navy);margin-bottom:12px;font-family:var(--display);font-weight:400}
-  .serv p{color:var(--text-soft);font-size:.98rem}
+.founder{background:var(--white)}
+
+.founder-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:center}
+
+@media(max-width:900px){.founder-grid{grid-template-columns:1fr;gap:44px}}
+
+.founder-photo{position:relative}
+
+.founder-img{
+  width:100%;
+  aspect-ratio:4/5;
+  border-radius:6px;
+  overflow:hidden;
+  position:relative;
+  background:linear-gradient(150deg,#0A5AB4,#001320);
+}
+
+.founder-img img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center center;
+}
+
+.founder-caption{margin-top:22px;padding-left:20px;border-left:3px solid var(--royal)}
+
+.founder-name{font-family:var(--display);font-size:1.5rem;color:var(--navy);font-weight:500}
+
+.founder-role{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-soft);font-weight:600;margin-top:4px}
+
+.founder-copy h2{font-size:clamp(1.9rem,3.6vw,2.8rem);color:var(--navy);margin-top:20px}
+
+.founder-copy h2 em{font-style:normal;font-weight:500;color:var(--royal)}
+
+.founder-copy p{color:var(--text-soft);font-size:1.06rem;margin-bottom:20px}
+
+.founder-copy p.lead{font-family:var(--display);font-size:1.4rem;line-height:1.4;color:var(--text);font-weight:400;margin:26px 0 24px}
+
+.founder-quote{border-left:3px solid var(--royal);padding:4px 0 4px 26px;margin:30px 0 0;
+
+  font-family:var(--display);font-style:italic;font-size:1.35rem;color:var(--navy);line-height:1.4}
+
+/* --------- atuacao / services --------- */
+.serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+@media(max-width:820px){.serv-grid{grid-template-columns:1fr}}
+.serv{padding:48px 40px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:.4s var(--ease);background:var(--white)}
+.serv:hover{background:var(--mist)}
+.serv .ico{width:44px;height:44px;color:var(--royal);margin-bottom:26px}
+.serv h3{font-size:1.25rem;color:var(--navy);margin-bottom:12px;font-family:var(--display);font-weight:400}
+.serv p{color:var(--text-soft);font-size:.98rem}
 
   /* ---------- diferenciais / dark quote ---------- */
   .creed{background:var(--ink);color:#fff;padding:140px 0;position:relative;overflow:hidden}
@@ -877,9 +904,9 @@
     <div class="frentes-intro reveal">
       <div style="max-width:640px">
         <span class="eyebrow">Portfólio</span>
-        <h2 style="font-size:clamp(2.1rem,4vw,3.2rem);margin-top:22px;color:var(--navy)">Empreendimentos <em style="font-weight:500;color:var(--royal)">já entregues</em>.</h2>
+        <h2 style="font-size:clamp(2.1rem,4vw,3.2rem);margin-top:22px;color:var(--navy)">Conheça <em style="font-weight:500;color:var(--royal)">nosso portfólio</em>.</h2>
       </div>
-      <p style="max-width:380px;color:var(--text-soft);font-size:1.05rem">45 anos de história se medem em chaves entregues. Conheça alguns dos empreendimentos que ajudamos a realizar.</p>
+      <p style="max-width:380px;color:var(--text-soft);font-size:1.05rem">Conheça alguns dos empreendimentos que já entregamos e que ainda estão em construção.</p>
     </div>
 
     <div class="port-grid">
@@ -910,7 +937,7 @@
       </div>
 
       <div class="port-card reveal">
-        <div class="port-img g3"><span class="port-status">Construindo</span><span class="port-ph"><img src="imagens/eleva-25.png" alt="Eleva 25"></span></div>
+        <div class="port-img g3"><span class="port-status">Em Construção</span><span class="port-ph"><img src="imagens/eleva-25.png" alt="Eleva 25"></span></div>
         <div class="port-body">
           <h3>Eleva 25</h3>
           <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Águas Claras, Brasília — DF</div>
@@ -923,7 +950,7 @@
       </div>
 
       <div class="port-card reveal">
-        <div class="port-img g4"><span class="port-status">Construindo</span><span class="port-ph"><img src="imagens/versat.png" alt="Versat"></span></div>
+        <div class="port-img g4"><span class="port-status">Em Construção</span><span class="port-ph"><img src="imagens/versat.png" alt="Versat"></span></div>
         <div class="port-body">
           <h3>Versat</h3>
           <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Águas Claras, Brasília — DF</div>
@@ -936,7 +963,7 @@
       </div>
 
       <div class="port-card reveal">
-        <div class="port-img g5"><span class="port-status"><text style="color:var(--navy)">Construindo</text></span><span class="port-ph"><img src="imagens/characara-bernadette.png" alt="Casa Pedra"></span></div>
+        <div class="port-img g5"><span class="port-status"><text style="color:var(--navy)">Em Construção</text></span><span class="port-ph"><img src="imagens/characara-bernadette.png" alt="Casa Pedra"></span></div>
         <div class="port-body">
           <h3>Chácara Bernadette</h3>
           <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Sobradinho, Brasília — DF</div>
@@ -949,10 +976,10 @@
       </div>
 
       <div class="port-card reveal">
-        <div class="port-img g6"><span class="port-status">Entregue</span><span class="port-ph">[ foto do empreendimento ]</span></div>
+        <div class="port-img g6"><span class="port-status">Em Construção</span><span class="port-ph"><img src="imagens/next.png" alt="Next"></span></div>
         <div class="port-body">
-          <h3>[ Nome do Empreendimento ]</h3>
-          <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>[ Bairro, Brasília — DF ]</div>
+          <h3>Next</h3>
+          <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Taguatinga, Brasília — DF</div>
           <div class="port-specs">
             <div class="port-spec"><div class="v">[ 2012 ]</div><div class="k">Entrega</div></div>
             <div class="port-spec"><div class="v">[ 96 ]</div><div class="k">Unidades</div></div>
@@ -960,6 +987,47 @@
           </div>
         </div>
       </div>
+
+      <div class="port-card reveal">
+        <div class="port-img g5"><span class="port-status">Em Construção</span><span class="port-ph"><img src="imagens/nexus.png" alt="Nexus"></span></div>
+        <div class="port-body">
+          <h3>Nexus</h3>
+          <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Taguatinga, Brasília — DF</div>
+          <div class="port-specs">
+            <div class="port-spec"><div class="v">[ 2014 ]</div><div class="k">Entrega</div></div>
+            <div class="port-spec"><div class="v">[ 150 ]</div><div class="k">Unidades</div></div>
+            <div class="port-spec"><div class="v">[ Residencial ]</div><div class="k">Tipo</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="port-card reveal">
+        <div class="port-img g6"><span class="port-status"><text style="color:var(--navy)">Em Construção</text></span><span class="port-ph"><img src="imagens/villa-campos.png" alt="Residencial Villa Campos"></span></div>
+        <div class="port-body">
+          <h3>Residencial Villa Campos</h3>
+          <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cidade Ocidental — GO</div>
+          <div class="port-specs">
+            <div class="port-spec"><div class="v">[ 2012 ]</div><div class="k">Entrega</div></div>
+            <div class="port-spec"><div class="v">[ 96 ]</div><div class="k">Unidades</div></div>
+            <div class="port-spec"><div class="v">[ Residencial ]</div><div class="k">Tipo</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="port-card reveal">
+        <div class="port-img g6"><span class="port-status">Em Construção</span><span class="port-ph"><img src="imagens/brava-riserva.png" alt="Brava Riserva"></span></div>
+        <div class="port-body">
+          <h3>Brava Riserva - Clarus</h3>
+          <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Praia Brava, Itajaí — SC</div>
+          <div class="port-specs">
+            <div class="port-spec"><div class="v">2031</div><div class="k">Entrega</div></div>
+            <div class="port-spec"><div class="v">[ 96 ]</div><div class="k">Unidades</div></div>
+            <div class="port-spec"><div class="v">[ Residencial ]</div><div class="k">Tipo</div></div>
+          </div>
+        </div>
+      </div>
+
+
     </div>
   </div>
 </section>
