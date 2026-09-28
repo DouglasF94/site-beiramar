@@ -579,8 +579,47 @@
   .port-card{border-radius:6px;overflow:hidden;border:1px solid var(--line);background:var(--white);
     transition:.45s var(--ease);display:flex;flex-direction:column}
   .port-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -32px rgba(11,27,43,.3);border-color:transparent}
-  .port-img{aspect-ratio:4/3;position:relative;overflow:hidden;
-    background:linear-gradient(150deg,#0A5AB4,#001320);display:flex;align-items:center;justify-content:center}
+.port-img{
+  aspect-ratio:4/3;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(150deg,#0A5AB4,#001320);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.port-img .port-ph{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.port-img .port-ph img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center center;
+}
+
+.port-status{
+  position:absolute;
+  top:16px;
+  left:16px;
+  z-index:2;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  background:rgba(255,255,255,.16);
+  backdrop-filter:blur(6px);
+  color:#fff;
+  padding:6px 12px;
+  border-radius:20px;
+}
   .port-img.g2{background:linear-gradient(150deg,#00448B,#002852)}
   .port-img.g3{background:linear-gradient(150deg,#00458C,#001320)}
   .port-img.g4{background:linear-gradient(150deg,#0A5AB4,#001320)}
@@ -845,7 +884,8 @@
   <div class="wrap">
     <div class="hero-inner">
       <span class="eyebrow">Grupo imobiliário · Brasília · Desde 1981</span>
-      <h1><b>Desde 1981</b>, um grupo <em>full service</em> com atuação pelo país. </h1>
+      <h1>Um <em>grupo imobiliário</em> com atuação nos mercados regionais que
+      <b>mais crescem</b>.</h1>
       <p>Um grupo, quatro frentes e uma só assinatura de solidez.</p>
       <div class="hero-cta">
         <a href="#frentes" class="btn btn-primary" style="background:#fff;color:var(--navy)">Conheça as frentes <span class="arrow">→</span></a>
@@ -988,7 +1028,7 @@
     <div class="founder-grid">
       <div class="founder-photo reveal">
         <div class="founder-img">
-          <span class="founder-ph"><img src="imagens/foto-alberto.png" alt="Alberto Fernandes, fundador do Grupo Beiramar"></span>
+          <span class="founder-ph"><img src="imagens/sr_alberto.jpg" alt="Alberto Fernandes, fundador do Grupo Beiramar"></span>
         </div>
         <div class="founder-caption">
           <div class="founder-name">Alberto Fernandes</div>
@@ -1170,9 +1210,8 @@
           <h3>Casa Pedra</h3>
           <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Águas Claras, Brasília — DF</div>
           <div class="port-specs">
-            <div class="port-spec"><div class="v">2025</div><div class="k">Entrega</div></div>
+            <div class="port-spec"><div class="v">2025</div><div class="k">VGV</div></div>
             <div class="port-spec"><div class="v">60</div><div class="k">Unidades</div></div>
-            <div class="port-spec"><div class="v">Residencial</div><div class="k">Tipo</div></div>
           </div>
         </div>
       </div>
@@ -1183,9 +1222,8 @@
           <h3>Casa 35</h3>
           <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Águas Claras, Brasília — DF</div>
           <div class="port-specs">
-            <div class="port-spec"><div class="v">[XXXX]</div><div class="k">Entrega</div></div>
+            <div class="port-spec"><div class="v">[XXXX]</div><div class="k">VGV</div></div>
             <div class="port-spec"><div class="v">[X]</div><div class="k">Unidades</div></div>
-            <div class="port-spec"><div class="v">[Residencial]</div><div class="k">Tipo</div></div>
           </div>
         </div>
       </div>
@@ -1196,9 +1234,8 @@
           <h3>Eleva 25</h3>
           <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Águas Claras, Brasília — DF</div>
           <div class="port-specs">
-            <div class="port-spec"><div class="v">[XXXX]</div><div class="k">Entrega</div></div>
+            <div class="port-spec"><div class="v">[XXXX]</div><div class="k">VGV</div></div>
             <div class="port-spec"><div class="v">[X]</div><div class="k">Unidades</div></div>
-            <div class="port-spec"><div class="v">Residencial</div><div class="k">Tipo</div></div>
           </div>
         </div>
       </div>
@@ -1209,9 +1246,8 @@
           <h3>Versat</h3>
           <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Águas Claras, Brasília — DF</div>
           <div class="port-specs">
-            <div class="port-spec"><div class="v">Dez/2028</div><div class="k">Entrega</div></div>
-            <div class="port-spec"><div class="v">167</div><div class="k">Unidades</div></div>
-            <div class="port-spec"><div class="v">Residencial</div><div class="k">Tipo</div></div>
+            <div class="port-spec"><div class="v">[XXXX]</div><div class="k">VGV</div></div>
+            <div class="port-spec"><div class="v">[X]]</div><div class="k">Unidades</div></div>
           </div>
         </div>
       </div>
@@ -1222,10 +1258,8 @@
           <h3>Chácara Bernadette</h3>
           <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Sobradinho, Brasília — DF</div>
           <div class="port-specs">
-            <div class="port-spec"><div class="v">Out/2028</div><div class="k">Entrega</div></div>
-            <div class="port-spec"><div class="v">343</div><div class="k">Unidades</div></div>
-            <div class="port-spec"><div class="v">1ª</div><div class="k">Fase</div></div>
-            <div class="port-spec"><div class="v">Res.</div><div class="k">Tipo</div></div>
+            <div class="port-spec"><div class="v">[XXXX]</div><div class="k">VGV</div></div>
+            <div class="port-spec"><div class="v">[X]</div><div class="k">Unidades</div></div>
           </div>
         </div>
       </div>
@@ -1236,9 +1270,8 @@
           <h3>Next</h3>
           <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Taguatinga, Brasília — DF</div>
           <div class="port-specs">
-            <div class="port-spec"><div class="v">[XXXX]</div><div class="k">Entrega</div></div>
+            <div class="port-spec"><div class="v">[XXXX]</div><div class="k">VGV</div></div>
             <div class="port-spec"><div class="v">[X]</div><div class="k">Unidades</div></div>
-            <div class="port-spec"><div class="v">[Residencial]</div><div class="k">Tipo</div></div>
           </div>
         </div>
       </div>
@@ -1249,22 +1282,20 @@
           <h3>Nexus</h3>
           <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Taguatinga, Brasília — DF</div>
           <div class="port-specs">
-            <div class="port-spec"><div class="v">[XXXX]</div><div class="k">Entrega</div></div>
+            <div class="port-spec"><div class="v">[XXXX]</div><div class="k">VGV</div></div>
             <div class="port-spec"><div class="v">[X]</div><div class="k">Unidades</div></div>
-            <div class="port-spec"><div class="v">[Residencial]</div><div class="k">Tipo</div></div>
           </div>
         </div>
       </div>
 
       <div class="port-card reveal">
-        <div class="port-img g6"><span class="port-status"><text style="color:var(--navy)">Em Construção</text></span><span class="port-ph"><img src="imagens/villa-campos.png" alt="Residencial Villa Campos"></span></div>
+        <div class="port-img g6"><span class="port-status">Em Construção</span><span class="port-ph"><img src="imagens/parque-viva.jpg" alt="Parque Vivá"></span></div>
         <div class="port-body">
-          <h3>Residencial Villa Campos</h3>
-          <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cidade Ocidental — GO</div>
+          <h3>Parque Vivá</h3>
+          <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Rio Verde — GO</div>
           <div class="port-specs">
-            <div class="port-spec"><div class="v">[XXXX]</div><div class="k">Entrega</div></div>
+            <div class="port-spec"><div class="v">[XXXX]</div><div class="k">VGV</div></div>
             <div class="port-spec"><div class="v">[X]</div><div class="k">Unidades</div></div>
-            <div class="port-spec"><div class="v">[Residencial]</div><div class="k">Tipo</div></div>
           </div>
         </div>
       </div>
@@ -1272,12 +1303,11 @@
       <div class="port-card reveal">
         <div class="port-img g6"><span class="port-status">Em Construção</span><span class="port-ph"><img src="imagens/brava-riserva.png" alt="Brava Riserva"></span></div>
         <div class="port-body">
-          <h3>Brava Riserva - Clarus</h3>
+          <h3>Brava Riserva</h3>
           <div class="port-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Praia Brava, Itajaí — SC</div>
           <div class="port-specs">
-            <div class="port-spec"><div class="v">2031</div><div class="k">Entrega</div></div>
+            <div class="port-spec"><div class="v">[XXXX]</div><div class="k">VGV</div></div>
             <div class="port-spec"><div class="v">[X]</div><div class="k">Unidades</div></div>
-            <div class="port-spec"><div class="v">[Residencial]</div><div class="k">Tipo</div></div>
           </div>
         </div>
       </div>
